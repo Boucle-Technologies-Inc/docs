@@ -50,7 +50,7 @@ Deleted locations never appear.
 }
 ```
 
-A card is a loyalty program. Multi-location accounts in granular mode have per-location clones; `family` groups a parent and its clones — treat it as the card's stable cross-location identity. Paused cards (`active: false`) are included: rewards already earned on them stay redeemable.
+A card is a loyalty program. Multi-location accounts in granular mode have per-location clones; `family` groups a parent and its clones — treat it as the card's stable cross-location identity. This is also the id the write endpoints expect for `card_id`: passing a clone's own `id` instead of its `family` always returns `404 not_found`. Paused cards (`active: false`) are included: rewards already earned on them stay redeemable.
 
 ## Customers
 

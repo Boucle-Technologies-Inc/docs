@@ -8,7 +8,7 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
   <Tab title="For Merchants">
     ## Displaying your QR code
 
-    Your QR poster lives at **Dashboard → QR Poster** (also called **Card Studio**). It encodes a permanent link to your loyalty card — it never changes, so you only ever need to print it once. Download it as a PNG or print it directly from your browser's print dialog and place it somewhere customers will naturally see it: your counter, your entrance, or your tables.
+    Your QR poster lives at **Dashboard → Card Studio**. It encodes a permanent link to your loyalty card — it never changes, so you only ever need to print it once. Download it as a PNG or print it directly from your browser's print dialog and place it somewhere customers will naturally see it: your counter, your entrance, or your tables.
 
     ## Approving stamp requests
 
@@ -27,7 +27,7 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
     By default, every stamp passes through the same set of checks: the staff-approval gate described above, server-side verification, and a cooldown period between stamps for the same customer (60 minutes by default, adjustable — or disabled — in Settings → Program rules). Together these mean a screenshotted or replayed QR code does nothing on its own; a stamp only ever lands after a live approval.
 
     <Note>
-      Staff approval can be turned off for faster counter service (**Fast Mode**, off by default) — see [Settings](/dashboard/settings#staff-approval-and-fast-mode). With it off, the cooldown still applies, but the approval gate doesn't. Ruffus also watches for other unusual patterns in the background regardless of this setting; see [Settings](/dashboard/settings#fraud-monitoring).
+      New accounts start with **Require staff PIN** off, so any staff member can approve a stamp request without entering a PIN first — see [Settings](/dashboard/settings#staff-approval-and-fast-mode). Turning it on doesn't add or remove the approval tap itself, which always happens either way; it just requires staff to enter their own PIN before stamping or redeeming, which gives you per-staff attribution and PIN protection — worth enabling once you have real staff beyond yourself. Ruffus also watches for other unusual patterns in the background regardless of this setting; see [Settings](/dashboard/settings#fraud-monitoring).
     </Note>
 
     ## Editing rewards and stamp thresholds

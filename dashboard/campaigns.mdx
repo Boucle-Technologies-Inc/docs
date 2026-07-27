@@ -10,7 +10,7 @@ Ruffus keeps customers engaged in two ways: promos you run yourself from **Dashb
 
 From **Dashboard → Campaigns**, you can launch:
 
-- **Bonus stamps** — customers earn extra stamps (up to 20) on top of the normal one per approved stamp request, for a limited time.
+- **Bonus stamps** — customers earn extra stamps (up to 12) on top of the normal one per approved stamp request, for a limited time.
 - **New-member bonus** — customers who join during the promo window get a stamp-count head start.
 
 Both can be scoped to a specific [location](/dashboard/multi-location) and a specific [card](/loyalty-card/multiple-cards), with a start and end date — handy for a seasonal push without touching your permanent program rules.
@@ -29,7 +29,7 @@ Ruffus also sends a set of automatic emails and push notifications on your behal
 | First stamp | A customer earns their very first stamp | Once | No |
 | Milestone | A customer crosses a lifetime-stamp milestone (10, 25, 50, 100) | Once per milestone | No |
 | [Reward ready](/loyalty-card/wallet) | A customer completes their card | Once per completed card | No |
-| Reward reminder | A completed reward sits unclaimed for 14\+ days | Once per reward | No |
+| Reward reminder | A completed reward sits unclaimed for 14\+ days | Every 7 days, until claimed | Indirectly — shares win-back's personal note |
 | Redemption follow-up | Right after a customer redeems a reward | Once per redemption | No |
 | Expiration reminder | A customer's earned reward is approaching its expiry (see below) | Once per reward | Indirectly — via your reward-expiry setting |
 | Slow-day nudge | A day of the week you've marked as historically quiet | Weekly, on the day(s) you pick | **Yes** — off by default |
@@ -43,6 +43,8 @@ All of these send by email and push notification together, same as the rest of R
 
 The one thing you can customize on the win-back message is a short personal note, up to 280 characters, appended to the email. Find it at **Dashboard → Campaigns → Win-back**, alongside an audience preview and send history. See [Members](/dashboard/customers#win-back-emails-automatic) for the full win-back picture.
 
+The Reward reminder email above uses this same personal-note field — it isn't a separate setting, so whatever you write for win-back also appears on reward reminders.
+
 ### Slow-day nudges
 
 Unlike everything else in this table, the slow-day nudge is entirely opt-in: pick which day (or days) of the week tend to be quiet for your business, and Ruffus sends a nudge to recently-active-but-not-regular customers on those days. It's off until you turn it on — there's no default day.
@@ -54,3 +56,12 @@ By default, an earned reward never expires. From **Settings → Program rules**,
 <Note>
   Send history for anniversary, expiration, slow-day, and both reward messages is visible from **Dashboard → Campaigns → Win-back**'s history panel, alongside win-back sends — it's the one place to see recent automated sends across message types.
 </Note>
+
+## Messages Ruffus sends you
+
+Everything above is customer-facing. Separate from that, Ruffus also emails **you** (the merchant) automatically:
+
+- **Milestone emails** — a celebration email when your program crosses a milestone rung on returning customers, total members, or stamps issued. At most one per day. On by default.
+- **Monthly recap** — a summary of last month's stamps issued, new members, and rewards redeemed, sent early each month. On by default.
+
+Both toggles live in **Settings → Program rules** — see [Program Settings](/dashboard/settings).

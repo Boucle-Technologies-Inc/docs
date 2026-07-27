@@ -14,6 +14,9 @@ Each row shows:
 - **Lifetime stamps** and **current stamps** (their progress toward the next reward)
 - **Last seen** and **joined** dates
 - **Rewards redeemed**
+- **Engagement** — a High/Mid/Low badge derived from how recently they last visited (High: within 14 days, Mid: within 45 days, Low: beyond that)
+
+Above the table, three stat chips — **Total**, **Active**, and **This month** — give you headline counts for the full list, independent of any filter or search applied below them.
 
 You can search the list and sort by lifetime stamps, last seen, or joined date — handy for finding your most loyal customers or anyone who's gone quiet.
 
@@ -30,19 +33,19 @@ Above the list, filter chips let you narrow the list down to a specific segment,
 Segments combine with search, so you can filter to a segment and then search within it to find a specific customer.
 
 <Tip>
-  The **At-risk** and **Close to reward** cards on the Dashboard overview link straight into the matching segment here — a fast way to go from a summary number to the actual list of customers behind it.
+  The **At-risk** and **Close to reward** cards on the Dashboard overview link straight into the matching segment here — a fast way to go from a summary number to the actual list of customers behind it. The At-risk card also has its own bulk **send reminder** button, letting you manually trigger the same inactivity-nudge email the automated weekly job sends, for the members currently listed there.
 </Tip>
 
 ## Member detail timeline
 
-Click into any member to see their full activity timeline: every stamp they've earned and every reward they've redeemed, in order. It's the fastest way to answer "has this customer actually been coming in?" during a support conversation.
+Click into any member to see their recent activity: their **last 20 stamps** and **last 10 redemptions**, in order. It's the fastest way to answer "has this customer actually been coming in?" during a support conversation — though for a customer with a longer history, the timeline shows their most recent activity, not the complete record.
 
 ## Exporting your member list
 
-You can export your Members list as a CSV, up to 5,000 rows at a time. If you need activity over a specific date range instead — stamps, approvals, redemptions — the **Activity** page has its own CSV export with date-range filtering.
+You can export your Members list as a CSV, up to 5,000 rows at a time, via the **Export CSV** button — columns are email, lifetime stamps, current stamps, last visit, redeemed, and member-since date. If you need activity over a specific date range instead — stamps, approvals, redemptions — the **Activity** page has its own CSV export with date-range filtering.
 
 <Tip>
-  Keep an export handy. If your subscription ever lapses, your CSV export from Members is also how you'd pull your customer list during the grace period — see [Plans & Billing](/billing/plans).
+  Keep an export handy. If your subscription ever lapses, the cancellation and grace-period-warning emails Ruffus sends you include a separate export link (owner-only) for pulling your customer list before data is purged — see [Plans & Billing](/billing/plans). That export's column set is different from the in-dashboard button above: email, first name, locale, marketing consent, joined date, current stamps, lifetime stamps, and card.
 </Tip>
 
 ## Win-back emails (automatic)
@@ -67,7 +70,7 @@ For promos beyond win-back, head to **Dashboard → Campaigns**. You can run bon
 
 ## Staff access to members
 
-Only **owners** see the Members list and member details — managers are limited to the counter tools, and staff working the counter don't have dashboard logins at all. Staff use 6-digit PINs created at **Dashboard → Staff**, which only gate stamp approvals and redemptions, not access to your customer data. There's no email-invite flow for staff; PINs are the whole model.
+The Members page isn't in a manager's sidebar — it's an owner-only nav item, so managers don't see a link into it day to day. That said, the underlying member-detail and send-reminder endpoints only require a staff login, not specifically an owner, so a manager who has a direct link to a member isn't blocked by the API itself. In practice, member management is an owner tool; managers work the counter. Staff working the counter don't have dashboard logins at all — they use 6-digit PINs created at **Dashboard → Staff**, which only gate stamp approvals and redemptions, not access to your customer data. There's no email-invite flow for staff; PINs are the whole model.
 
 ## Privacy
 

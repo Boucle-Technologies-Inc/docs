@@ -58,7 +58,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
 | Field | Type | Notes |
 | --- | --- | --- |
 | `location_id` | string (UUID) | required |
-| `card_id` | string (UUID) | optional — defaults to the location's sole active card; required if it has more than one |
+| `card_id` | string (UUID) | optional — if omitted, resolves to the oldest shared card, which may not be the one you intended; multi-card merchants should always pass it explicitly. Must be the card's `family` id (see `GET /v1/cards`), not a per-location clone's own `id` — passing a clone id returns `404 not_found` |
 | `stamps` | integer | 1–100, default 1 |
 | `external_id` | string | optional, 1–255 chars — your own dedup key (see below) |
 
@@ -98,7 +98,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../adjust \
 | Field | Type | Notes |
 | --- | --- | --- |
 | `location_id` | string (UUID) | required |
-| `card_id` | string (UUID) | optional, same default as `/earn` |
+| `card_id` | string (UUID) | optional, same resolution behavior and `family`-id requirement as `/earn` (see above) |
 | `stamps` | integer | non-zero, magnitude ≤ 100 — positive to add, negative to remove |
 | `external_id` | string | optional, same dedup semantics as `/earn` |
 
@@ -137,7 +137,7 @@ Body — exactly one of `reward_id` or `short_code`, plus `location_id`:
 | Field | Type | Notes |
 | --- | --- | --- |
 | `reward_id` | string (UUID) | |
-| `short_code` | string | the 6-digit code the customer shows you; must currently be `available` or `pending_redemption` |
+| `short_code` | string | the 6-digit code the customer shows you; must currently be `available` |
 | `location_id` | string (UUID) | required |
 
 ```json
@@ -151,7 +151,9 @@ Body — exactly one of `reward_id` or `short_code`, plus `location_id`:
 }
 ```
 
-The reward is looked up scoped to your merchant and this customer — one belonging to someone else, or to a different merchant, returns `404 not_found` either way. A reward tied to a different location than the one you passed returns `409 conflict`. A reward that's already been redeemed or has expired returns `409 conflict`. If the location's Ruffus subscription isn't active, `409 subscription_inactive`.
+Unlike `/earn` and `/adjust`, whose `cardId` is always the card's `family` id, `/redeem`'s `cardId` is the specific program row that granted the reward — for a granular multi-location merchant this can be a per-location clone id, not the family id.
+
+The reward is looked up scoped to your merchant and this customer — one belonging to someone else, or to a different merchant, returns `404 not_found` either way. A reward tied to a different location than the one you passed returns `409 conflict`. A reward that's already been redeemed or has expired returns `409 conflict`. If the location's Ruffus subscription isn't active, `402 subscription_inactive`.
 
 ## Typical use
 

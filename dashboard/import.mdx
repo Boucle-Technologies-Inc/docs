@@ -13,16 +13,22 @@ If you already keep a customer list — from a spreadsheet, an old POS export, o
 ## How it works
 
 <Steps>
-  <Step title="Choose the destination">
-    Pick which **location** and which **card** the imported customers should be enrolled in.
-  </Step>
   <Step title="Upload your CSV">
-    Upload your customer list. Each row becomes a customer record and a membership on the card you selected.
+    Upload your customer list — a spreadsheet export or another loyalty tool's CSV works fine.
   </Step>
-  <Step title="Review and confirm">
-    Ruffus creates the customers and their starting memberships in bulk.
+  <Step title="Map your columns">
+    Pick which **location** and which **card** the imported customers should be enrolled in, then map your file's columns (identifier, stamp count, and so on) to what Ruffus expects.
+  </Step>
+  <Step title="Preview and confirm">
+    Review the preview, then confirm — Ruffus creates the customers and their starting memberships in bulk.
   </Step>
 </Steps>
+
+<Note>
+  Not every row creates a membership right away. A row that matches an existing customer (by phone or email already in the system) is stamped immediately. A row that doesn't match anyone yet is queued instead, and only becomes a real membership if and when that person later joins your program on their own.
+
+  Queued rows are held for **one year**. If the person hasn't joined by then, the row is deleted and the stamps you imported for them are gone — they'd start from zero if they joined later. Rows that were claimed inside the year are unaffected.
+</Note>
 
 ## After importing
 

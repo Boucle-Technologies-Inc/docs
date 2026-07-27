@@ -12,7 +12,9 @@ Everything you do to run your loyalty program happens at [app.ruffus.app](https:
 
 ## The navigation
 
-The sidebar is split into two groups: **Admin** sections, which give a full picture of your program, and **Counter** sections, which is what staff use during service.
+The sidebar is organized into four sections — **Main**, **Grow**, **Developer**, and **Integrations** — plus a standalone **Redeem terminal** shortcut. Account-level pages (Settings, Billing, Ideas, Guides) live together in the account menu, opened from your avatar, not in the sidebar itself.
+
+### Main
 
 <CardGroup cols={2}>
   <Card title="Dashboard" icon="chart-line">
@@ -23,6 +25,10 @@ The sidebar is split into two groups: **Admin** sections, which give a full pict
     Your full member list, searchable and sortable, plus a detail timeline for every customer.
   </Card>
 
+  <Card title="Cards" icon="layer-group">
+    Create and manage multiple loyalty cards — names, stamp counts, and rewards per card. See [Multiple Cards](/loyalty-card/multiple-cards).
+  </Card>
+
   <Card title="Activity" icon="list">
     A running log of stamp requests, approvals, and redemptions, with date-range CSV export.
   </Card>
@@ -30,35 +36,69 @@ The sidebar is split into two groups: **Admin** sections, which give a full pict
   <Card title="Rewards" icon="gift">
     Redemption KPIs, full redemption history, and your top redeemers.
   </Card>
+</CardGroup>
 
-  <Card title="Import" icon="file-import">
-    Bring in an existing customer list to get your program started with a head start.
+### Grow
+
+<CardGroup cols={2}>
+  <Card title="Campaigns" icon="megaphone">
+    Run bonus-stamp and new-member-bonus promos, and customize your win-back emails. See [Campaigns & Automated Messages](/dashboard/campaigns).
   </Card>
 
-  <Card title="Redeem terminal" icon="qrcode">
-    Where staff enter a customer's 6-digit reward code (and PIN, if you require one) to complete a redemption.
-  </Card>
-
-  <Card title="Staff" icon="id-badge">
-    Create and manage the 4-digit PINs your staff use at the counter.
-  </Card>
-
-  <Card title="QR Poster" icon="image">
-    Card Studio — design your card's look, download your printable QR poster, and manage NFC station cards if you have them. See [NFC Station Cards](/loyalty-card/nfc-cards).
-  </Card>
-
-  <Card title="Cards" icon="layer-group">
-    Create and manage multiple loyalty cards — names, stamp counts, and rewards per card. See [Multiple Cards](/loyalty-card/multiple-cards).
+  <Card title="Tiers" icon="trophy">
+    VIP tiers that grant a standing bonus-stamp perk to your most loyal customers. Only shown once this feature is enabled for your account. See [VIP Tiers](/loyalty-card/tiers).
   </Card>
 
   <Card title="Points" icon="coins">
     Configure earn rules, your product catalog, and your points redemption catalog. Only shown once points are turned on for a card. See [Points](/loyalty-card/points).
   </Card>
 
-  <Card title="Campaigns" icon="megaphone">
-    Run bonus-stamp and new-member-bonus promos, and customize your win-back emails. See [Campaigns & Automated Messages](/dashboard/campaigns).
+  <Card title="Import" icon="file-import">
+    Bring in an existing customer list to get your program started with a head start.
   </Card>
 
+  <Card title="Staff" icon="id-badge">
+    Create and manage the 6-digit PINs your staff use at the counter.
+  </Card>
+
+  <Card title="Card Studio" icon="image">
+    Design your card's look, download your printable QR poster, and manage NFC station cards if you have them. See [NFC Station Cards](/loyalty-card/nfc-cards).
+  </Card>
+</CardGroup>
+
+### Developer
+
+<CardGroup cols={2}>
+  <Card title="API Keys" icon="key">
+    Create and manage API keys for the [Developer API](/api/overview).
+  </Card>
+
+  <Card title="Webhooks" icon="webhook">
+    Subscribe an endpoint to Ruffus events — stamps, redemptions, and more. See [Webhooks](/api/webhooks).
+  </Card>
+</CardGroup>
+
+### Integrations
+
+<CardGroup cols={2}>
+  <Card title="Integrations" icon="storefront">
+    Connect Shopify so paid online orders earn stamps and points automatically. Zapier and Make are listed here as coming soon.
+  </Card>
+</CardGroup>
+
+### Redeem terminal
+
+A standalone sidebar item, outside the four sections above:
+
+<Card title="Redeem terminal" icon="qrcode">
+  Where staff enter a customer's 6-digit reward code (and PIN, if you require one) to complete a redemption.
+</Card>
+
+### Account menu
+
+Opened from your avatar, not the sidebar:
+
+<CardGroup cols={2}>
   <Card title="Ideas" icon="lightbulb">
     Inspiration and suggestions for getting more out of your program.
   </Card>
@@ -67,8 +107,12 @@ The sidebar is split into two groups: **Admin** sections, which give a full pict
     Locations, program rules, your white-label domain, language, and account settings. See [Program Settings](/dashboard/settings).
   </Card>
 
+  <Card title="Guides" icon="sparkles">
+    Short how-to guides for getting more out of your program.
+  </Card>
+
   <Card title="Billing" icon="credit-card">
-    Your plan, payment method, and invoices. Billing lives at the top level of the nav, not under Settings.
+    Your plan, payment method, and invoices — a sibling of Settings in the account menu, not nested under it.
   </Card>
 </CardGroup>
 
@@ -99,6 +143,6 @@ Scroll further and the detailed view adds:
 Ruffus has two dashboard roles:
 
 - **Owner** — full access to every section listed above.
-- **Manager** — limited to the counter tools: the Redeem terminal and the QR Poster page. Managers run the floor; they don't see billing, members, staff PIN management, or program-wide settings.
+- **Manager** — limited to the counter tools: the Redeem terminal and Card Studio. Managers run the floor; they don't see billing, members, staff PIN management, or program-wide settings.
 
-Staff working the counter itself don't get dashboard accounts at all — they use a 4-digit PIN, set up by the owner from **Dashboard → Staff**. See [Members](/dashboard/customers) for more on staff access.
+Staff working the counter itself don't get dashboard accounts at all — they use a 6-digit PIN, set up by the owner from **Dashboard → Staff**. See [Members](/dashboard/customers) for more on staff access.

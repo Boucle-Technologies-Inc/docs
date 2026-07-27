@@ -1,7 +1,7 @@
 ---
 title: "Program Settings: Domain, Security, Referrals, and Preferences"
 sidebarTitle: "Settings"
-description: "The rest of Settings beyond program rules — your white-label domain, staff approval security options, referrals, and language."
+description: "Program rules, your white-label domain, staff PIN and approval options, referrals, and language."
 ---
 
 **Settings** is where the rest of your program's configuration lives — anything not covered by [Multi-Location](/dashboard/multi-location), [Points](/loyalty-card/points), [VIP Tiers](/loyalty-card/tiers), [Nearby Reminders](/loyalty-card/nearby-reminders), or [Campaigns](/dashboard/campaigns). All of it is owner-only.
@@ -10,13 +10,33 @@ description: "The rest of Settings beyond program rules — your white-label dom
 
 Pick a subdomain for your dashboard — `yourshop.ruffus.app` instead of the default — from **Settings**. This is cosmetic: it changes the URL your staff and you use to reach the dashboard, not where customer-facing card links live.
 
-## Staff approval and Fast Mode
+## Program rules
 
-By default, every stamp requires a staff member to approve it in the staff portal — the fraud-prevention model described in [How It Works](/how-it-works). **Fast Mode**, off by default, lets a merchant skip that per-stamp approval step for faster counter service.
+**Program rules** (per card, if you run more than one) bundles the settings that control day-to-day stamping and redemption behaviour:
+
+- **Anti-fraud delay** — the minimum gap between stamp requests from the same customer at the same location, so one visit can't be stamped twice. Defaults to 60 minutes; can be turned off entirely.
+- **PIN required to redeem** — off by default. When on, a staff member must enter their PIN for every redemption. This is separate from Require staff PIN below.
+- **Reward expiry** — off by default, so an unused reward never expires. Turn it on and pick a window — 7, 14, 30, 60, 90, 180, or 365 days — after which an unredeemed reward voids.
+- **Require staff PIN** and the merchant email toggles below also live in this same panel.
+
+## Staff PIN
+
+Every stamp still requires a staff member to tap approve in the staff portal — the fraud-prevention model described in [How It Works](/how-it-works), and that approval tap can't be turned off. **Require staff PIN** is a narrower, separate toggle: whether staff must also enter their own PIN before stamping or redeeming.
+
+A brand-new merchant starts with this **off**, so the welcome-package staff QR works immediately without setting up PINs first. Turn it **on** once you've added real staff, for per-staff attribution and PIN protection on stamping, bulk stamps, and redemptions.
 
 <Warning>
-  Turning on Fast Mode removes the staff-approval check that keeps stamps tied to real, staff-confirmed visits. Only turn it on if you understand and accept that trade-off — the cooldown window still applies, but the approval gate itself is gone.
+  Turning Require staff PIN off does not skip the approval tap — a staff member still has to approve every stamp request. It only removes the PIN step and per-staff attribution layered on top of that approval; anyone with access to the staff screen can then stamp or redeem without entering a PIN.
 </Warning>
+
+## Merchant email preferences
+
+Two more toggles live in the same Program rules panel and control emails Ruffus sends **you**, not your customers — both are CASL-relevant opt-outs, on by default:
+
+- **Milestone emails** — an occasional celebration email when your program hits a milestone (returning customers, total members, or stamps given).
+- **Monthly recap email** — a monthly summary of your program: stamps issued, new members, rewards redeemed, and who's close to a reward.
+
+See [Campaigns & Automated Messages](/dashboard/campaigns) for the customer-facing lifecycle emails, which are separate from these two.
 
 ## Fraud monitoring
 

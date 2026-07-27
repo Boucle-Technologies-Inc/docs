@@ -88,7 +88,7 @@ Every error uses one envelope:
 | `validation_error` | 400 | Bad parameters — see `details[]` per field |
 | `not_found` | 404 | No such resource in your account |
 | `conflict` | 409 | The request can't be applied in the resource's current state — see the message |
-| `subscription_inactive` | 409 | The location's Ruffus subscription isn't active |
+| `subscription_inactive` | 402 | The location's Ruffus subscription isn't active |
 | `idempotency_conflict` | 422 | `Idempotency-Key` reused with a different request body |
 | `internal_error` | 500 | Something went wrong on our side |
 
@@ -119,4 +119,4 @@ When `hasMore` is `true`, request the next page with `starting_after` set to the
 
 ## Dates and privacy
 
-All timestamps are UTC ISO-8601 with a `Z` suffix. Customers who exercised their right to erasure return `not_found` on lookup and appear in event feeds with `"customerId": null, "anonymized": true`. Email and phone appear only on the direct customer endpoint, never in lists or feeds.
+All timestamps are UTC ISO-8601 with a `Z` suffix. Customers who exercised their right to erasure return `not_found` on lookup and appear in event feeds with `"customerId": null, "anonymized": true`. Email and phone appear only on the direct customer endpoint, never in lists or feeds. `/v1/rewards` is the exception: it joins against the customer record, so an erased customer's rewards disappear from that list entirely rather than being masked.

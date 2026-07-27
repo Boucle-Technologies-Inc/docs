@@ -50,12 +50,14 @@ All Ruffus plans include the full loyalty toolkit — campaigns, Apple/Google Wa
 | Apple / Google Wallet | ✓ | ✓ | ✓ | ✓ |
 | Automatic win-back emails | ✓ | ✓ | ✓ | ✓ |
 | Analytics | Consolidated | Consolidated \+ per-location | Consolidated \+ per-location | Consolidated \+ per-location |
-| API & webhooks | — | ✓ | ✓ higher limits | ✓ |
+| API & webhooks | — | ✓ read-only\* | ✓ read/write, higher limits | ✓ read/write |
 | QR poster / Card Studio | ✓ | ✓ | ✓ | ✓ |
 | Trilingual (FR / EN / ES) | ✓ | ✓ | ✓ | ✓ |
 | Unlimited members & stamps | ✓ | ✓ | ✓ | ✓ |
 | Priority support | — | ✓ | ✓ named contact | ✓ |
 | Custom wallet certificates | — | — | — | ✓ |
+
+\* Growth's API access is read-only — customer and loyalty data plus webhook management, no write scopes. Network and Custom get the full scope set, including writing customer and loyalty data.
 
 Every plan is trilingual out of the box — your card, dashboard, emails, and wallet passes all work in French, English, and Spanish, not just two of the three.
 
@@ -72,18 +74,18 @@ Add-on quantities carry over automatically when you change plans (location add-o
 
 Paying annually gets you **2 months free** compared to paying monthly:
 
-- Basic: $499.90 CAD/yr (equivalent to $41.65/mo)
-- Growth: $999.90 CAD/yr (equivalent to $83.32/mo)
+- Basic: $499.90 CAD/yr (equivalent to $41.66/mo)
+- Growth: $999.90 CAD/yr (equivalent to $83.33/mo)
 - Network: $2,499.90 CAD/yr (equivalent to $208.33/mo)
 
-Annual plans are billed upfront for the full year. You can switch between monthly and annual billing anytime — the change takes effect immediately, with prorated billing for the switch.
+Annual plans are billed upfront for the full year. Switching from monthly to annual billing takes effect immediately, with prorated billing for the switch. Switching from annual back to monthly is treated as a downgrade — see [Changing plans](#changing-plans) below — so it's scheduled for the end of your current billing period instead.
 
 ## Free trial
 
 Every new account gets a **14-day free trial** with full feature access — no credit card required to start. Use the trial to run Ruffus with real customers before picking a plan.
 
 <Warning>
-  If your trial ends without a payment method on file, your account is marked canceled about a week later, then enters a 30-day grace period. You can export your member list as a CSV during the grace period, and you'll get a warning email about a week before anything is removed. After the full 30 days, your loyalty data is permanently deleted. Add a payment method before the trial ends to avoid all of this.
+  If your trial ends without a payment method on file, your account is marked canceled within about a day, then enters a 30-day grace period. You can export your member list as a CSV during the grace period, and you'll get a warning email about a week before anything is removed. After the full 30 days, your loyalty data is permanently deleted. Add a payment method before the trial ends to avoid all of this.
 </Warning>
 
 ## Changing plans
@@ -94,13 +96,13 @@ Every new account gets a **14-day free trial** with full feature access — no c
 
 If you downgrade below your current location count (for example, Network's 10 locations down to Growth's 3), you'll choose which locations stay active when you schedule the downgrade. The others are deactivated at renewal — not deleted — so their data is preserved if you add locations back later. See [Multi-Location](/dashboard/multi-location) for details.
 
-Loyalty cards are capped at 3 on every plan, so changing plans never affects your cards. See [Multiple Cards](/loyalty-card/multiple-cards) for how the cap works.
+Loyalty cards are capped at 3 on every plan, so changing plans never affects your cards. (A small number of legacy accounts provisioned above this cap before it was flattened to 3 may still be asked to choose which cards stay active when changing plans.) See [Multiple Cards](/loyalty-card/multiple-cards) for how the cap works.
 
 ## Cancelling
 
 You can cancel anytime from **Dashboard → Billing**. Your program stays active through the end of your current paid period — cancelling doesn't cut you off immediately. If you're on an annual plan, cancelling stops the renewal; there's no partial refund for the unused months of the year. A pause option is also available if you want a break without fully cancelling. You can reactivate anytime before your period ends; after a full cancellation, you'd resubscribe through checkout.
 
-Refunds outside the normal cancellation flow are handled case by case — reach out to [billing@ruffus.app](mailto:billing@ruffus.app).
+We don't refund partial billing periods, except where required by law. If something went wrong on our end, we'll always make it right — reach out to [billing@ruffus.app](mailto:billing@ruffus.app).
 
 ## Payment methods
 

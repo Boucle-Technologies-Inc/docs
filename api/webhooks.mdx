@@ -205,11 +205,13 @@ The response is the only time you'll see the full `secret`:
 }
 ```
 
+`status` is `enabled` or `disabled` when you set it. A third value, `auto_disabled`, is read-only: the delivery worker sets it after 20 consecutive failed attempts (see [Responding, retries, and auto-disable](#responding-retries-and-auto-disable) below). You'll see it on reads, but there's no way to set it yourself — to recover, re-enable the endpoint explicitly with `PATCH` (`{"status": "enabled"}`), which also resets the failure counter.
+
 ### List, read, update, delete
 
 - `GET /v1/webhooks` — all endpoints (secret masked to `secretLast4`)
 - `GET /v1/webhooks/{id}`
-- `PATCH /v1/webhooks/{id}` — any of `url`, `description`, `events`, `status` (`enabled` / `disabled`)
+- `PATCH /v1/webhooks/{id}` — any of `url`, `description`, `events`, `status` (settable to `enabled` / `disabled`; `auto_disabled` is read-only, see above)
 - `DELETE /v1/webhooks/{id}` — removes the endpoint and its delivery history
 
 ### Rotate the secret

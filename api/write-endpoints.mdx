@@ -41,6 +41,8 @@ Enrolls the customer into every active card at that location — the same set th
 
 Re-enrolling someone already on those cards is a no-op: `200` with `created: false`, same body otherwise. `email`/`phone` that don't match a registered customer return `404 not_found`.
 
+Enrolling someone this way emails them: customers who already have a Ruffus account are told you added them to your program, and the email includes a link to remove the card if they didn't ask for it (usable only while the card has no stamps, rewards, or points). Enroll customers who asked to join — at your checkout, at the register — not harvested lists.
+
 ## Issue a stamp
 
 `POST /v1/customers/{ref}/earn` · scope `loyalty:write`

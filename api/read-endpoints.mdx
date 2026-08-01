@@ -58,12 +58,12 @@ A card is a loyalty program. Multi-location accounts in granular mode have per-l
 
 `{ref}` is a customer id, or a prefixed lookup: `email:ana@example.com` or `phone:+15145551234` (URL-encode the ref: `email%3Aana%40example.com`).
 
+Email and phone are accepted as lookup refs but never returned: the response carries no contact details, only what a register needs to confirm the right person. You get a match on the identifier you supplied — not the fields you didn't have.
+
 ```json
 {
   "object": "customer",
   "id": "7e31…",
-  "email": "ana@example.com",
-  "phone": null,
   "firstName": "Ana",
   "locale": "fr",
   "createdAt": "2026-06-11T19:22:00.000Z"

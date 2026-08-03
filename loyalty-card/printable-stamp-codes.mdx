@@ -1,0 +1,95 @@
+---
+title: "Printable Stamp Codes: Turning Delivery and Online Orders Into Members"
+sidebarTitle: "Printable Codes"
+description: "Generate sheets of single-use QR codes to drop into delivery bags, online orders, or catering boxes, so off-premise customers can join your loyalty program and collect a stamp without a POS or marketplace integration."
+---
+
+Delivery marketplaces like Uber Eats, DoorDash, and SkipTheDishes don't share a customer's name, phone number, or email with you — so a customer who only ever orders through one of them can never become a member the normal way. Printable stamp codes solve this with paper instead of an integration: you generate a sheet of single-use QR codes, print it on your own printer, cut the codes apart, and drop one into every bag or box you send out. A customer who scans it joins your program (if they aren't already a member) and collects a stamp — no app, no POS, and no data ever flows from the marketplace to Ruffus.
+
+<Note>
+  Ruffus doesn't integrate with Uber Eats, DoorDash, or any other marketplace, and never ingests their order data. The printed code is the entire mechanism — it's what makes this work without an integration at all.
+</Note>
+
+## Generating a batch
+
+From **Dashboard → Card Studio**, the **Printable stamp codes** section lets you generate a new batch:
+
+<Steps>
+  <Step title="Pick a store and card">
+    Choose which location and which loyalty card the codes should stamp.
+  </Step>
+  <Step title="Choose a channel">
+    Label the batch **Delivery**, **Online store**, **Catering**, **Event**, or **Other** — this is for your own reporting only and never changes how a code behaves.
+  </Step>
+  <Step title="Choose a number of sheets">
+    Each sheet prints **24 codes** on a US Letter page, up to a maximum of **20 sheets (480 codes) per batch**.
+  </Step>
+  <Step title="Generate & download">
+    Ruffus mints the batch and immediately downloads a PDF — one page per sheet, with dashed cut lines around each code so you can cut them apart cleanly.
+  </Step>
+</Steps>
+
+<Tip>
+  Give the batch a label you'll recognize later, like "Uber Eats — August." It's what identifies the batch in your batch history, so make it specific enough to tell batches apart.
+</Tip>
+
+Generating and voiding batches is **owner-only**. Managers can view the batch history in Card Studio but won't see the generate form.
+
+## What happens when a customer scans
+
+<Steps>
+  <Step title="They scan the code">
+    No app needed — it opens straight in their phone's camera or browser, the same as your counter QR poster.
+  </Step>
+  <Step title="They sign in or join">
+    Returning members are recognized automatically. A first-time scanner creates a lightweight account with a phone number (SMS code) or Google/Apple sign-in, the same as joining from your counter poster.
+  </Step>
+  <Step title="The stamp lands immediately">
+    Unlike a counter scan, there's no staff approval step. The code itself is the credential — it's destroyed the instant it's used, so there's nothing left for staff to verify.
+  </Step>
+</Steps>
+
+<Note>
+  Each code works **exactly once**. A customer who scans a code that's already been used sees a clear "already used" screen — it can't be reused, shared, or claimed a second time by anyone.
+</Note>
+
+Codes don't expire on a clock. A code stays valid until it's either scanned or its batch is voided — so a sheet sitting in a drawer for months still works when you finally use it.
+
+## Voiding a batch
+
+If a printed stack is lost or stolen, void the batch from its row in the batch table. Voiding immediately:
+
+- Kills every **unredeemed** code in that batch — a scan of any of them fails from that moment on.
+- Blocks the batch's PDF from ever being re-downloaded.
+
+<Warning>
+  Voiding is **irreversible** — there's no un-void. It's also **owner-only**. Stamps a customer already collected from that batch are unaffected; voiding only stops codes that haven't been scanned yet.
+</Warning>
+
+## Re-downloading a sheet
+
+Lost the PDF, or need another copy for a second printer? Click **Re-download** on any active batch's row to get the exact same sheet again, any time. A voided batch can't be re-downloaded — that's part of what voiding is for.
+
+## Tracking performance
+
+Each batch's row shows how many codes were **generated**, how many have been **redeemed**, and the resulting **redemption rate**, so you can gauge how many of your delivery or online orders are converting into members. Since Ruffus never sees marketplace order data, this is the whole picture Ruffus can offer — compare it against your own marketplace dashboard's order count to see your true conversion rate.
+
+## What if...
+
+<AccordionGroup>
+  <Accordion title="A customer scans a code from a voided batch?">
+    They see a clear "this code is no longer valid" screen. Nothing is granted, and there's no way to salvage an individual code from a voided batch — the batch has to be regenerated.
+  </Accordion>
+
+  <Accordion title="Two customers scan the same code at the same time?">
+    Only one wins. The code can only ever be claimed once, so whichever scan lands first gets the stamp and the second sees the "already used" screen.
+  </Accordion>
+
+  <Accordion title="A customer isn't enrolled in the card the batch was printed for?">
+    They're guided through joining first, exactly like a first counter visit. Once they finish joining, the stamp is applied automatically — nothing is lost by not being a member yet.
+  </Accordion>
+
+  <Accordion title="Can I reuse a batch for a different channel later?">
+    Not directly — a batch is generated against one card and one channel label at print time. Generate a new batch with the channel you need; it costs nothing but paper.
+  </Accordion>
+</AccordionGroup>

@@ -41,6 +41,7 @@
               "loyalty-card/tiers",
               "loyalty-card/qr-code",
               "loyalty-card/nfc-cards",
+              "loyalty-card/printable-stamp-codes",
               "loyalty-card/nearby-reminders",
               "loyalty-card/wallet"
             ]

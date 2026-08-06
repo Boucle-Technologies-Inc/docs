@@ -54,7 +54,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
   -H "X-Api-Key: rk_live_..." \
   -H "Content-Type: application/json" \
   -H "Idempotency-Key: order_48213-stamp" \
-  -d '{ "location_id": "9b2f...", "stamps": 1, "external_id": "order_48213" }'
+  -d '{ "location_id": "9b2f...", "stamps": 1, "amount_cents": 1234, "external_id": "order_48213" }'
 ```
 
 | Field | Type | Notes |
@@ -62,6 +62,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
 | `location_id` | string (UUID) | required |
 | `card_id` | string (UUID) | optional — if omitted, resolves to the oldest shared card, which may not be the one you intended; multi-card merchants should always pass it explicitly. Must be the card's `family` id (see `GET /v1/cards`), not a per-location clone's own `id` — passing a clone id returns `404 not_found` |
 | `stamps` | integer | 1–100, default 1 |
+| `amount_cents` | integer | optional — the sale total in cents (e.g. `1234` = $12.34). **Required** when the target card's points earn mode is **per amount spent** — omitting it there returns `409 conflict` rather than granting the stamp with zero points. Ignored for a **flat**-points or no-points card. No upper bound: this is a machine-supplied total from your own system, not a staff-entered counter amount, so it isn't subject to the manual entry's typo guard — a genuine $15,000 sale earns its full points. |
 | `external_id` | string | optional, 1–255 chars — your own dedup key (see below) |
 
 ```json
@@ -72,15 +73,16 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
   "cardId": "c1a2…",
   "membershipId": "m9f4…",
   "stamps": 1,
+  "points": 30,
   "balance": 7,
   "unlockedRewardIds": [],
   "deduplicated": false
 }
 ```
 
-`unlockedRewardIds` is populated when this grant crosses the card's threshold. This endpoint issues **only** the stamps you request — it never applies in-person extras like campaign bonuses, referral credit, or tier multipliers.
+This endpoint earns exactly what an in-person visit earns: active [campaign](/dashboard/campaigns) bonus stamps and [VIP tier](/loyalty-card/tiers) perks apply on top of the base `stamps` you request, the same as a staff scan or a tap-to-earn visit — so the `stamps` in the response is the *total actually granted*, which can exceed what you requested when a bonus applies. A referral payout owed to whoever referred this customer is also triggered on their first-ever stamp, same as any other visit. `points` reflects [Points](/loyalty-card/points), when enabled on the target card — computed from `amount_cents` on a **per amount spent** card, or from the granted stamp count on a **flat**-points card; `0` when points aren't enabled. `unlockedRewardIds` is populated when this grant crosses the card's threshold.
 
-**Deduplication by `external_id`:** pass a stable key that identifies the real-world event (e.g. your own order or POS transaction id). A second request reusing the same `external_id` on the same membership doesn't re-grant — it returns `200` with `deduplicated: true` and the current balance, unchanged. This is independent of `Idempotency-Key`: use `external_id` to make the *business action* idempotent even from a different request, and `Idempotency-Key` to make an individual *HTTP retry* safe.
+**Deduplication by `external_id`:** pass a stable key that identifies the real-world event (e.g. your own order or POS transaction id). A second request reusing the same `external_id` on the same membership doesn't re-grant — it returns `200` with `deduplicated: true` and the current balance, unchanged. `stamps` and `points` are `0` on that response: they report what *this* call granted, which is nothing — not a replay of what the original call granted. This is independent of `Idempotency-Key`: use `external_id` to make the *business action* idempotent even from a different request, and `Idempotency-Key` to make an individual *HTTP retry* safe.
 
 A customer not enrolled at `location_id` returns `409 conflict` — enroll them first.
 

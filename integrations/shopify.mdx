@@ -7,7 +7,7 @@ icon: "bag"
 The Ruffus Loyalty app for Shopify connects your online store to the same loyalty card your customers carry in Apple and Google Wallet. Every paid order earns stamps and points automatically — no staff scan, no storefront widget — and customers can spend a reward as a single-use discount code at your checkout.
 
 <Info>
-  The app is **included free with every paid Ruffus plan**. Online-only merchants (no physical counter) can subscribe directly through Shopify instead.
+  The app is **included free with every paid Ruffus plan**, and is not sold separately — it extends a loyalty program that starts at your counter rather than replacing one. Connecting your store needs a Ruffus account; there is no separate Shopify subscription.
 </Info>
 
 ## Install the app
@@ -16,13 +16,9 @@ The Ruffus Loyalty app for Shopify connects your online store to the same loyalt
 2. Approve the requested permissions — Ruffus reads orders and customer emails to award loyalty credit, and writes discount codes for reward redemption. Nothing else.
 3. The app opens inside your Shopify admin.
 
-## Activate it
+## Link it to your Ruffus account
 
-There are two ways to activate, depending on your situation:
-
-### You already have a Ruffus plan (recommended)
-
-The app is included with your plan:
+Linking is how the app activates. It is included with your plan, so there is nothing to buy here:
 
 1. In the embedded app (Shopify admin), click **Get linking code**. You get an 8-digit code valid for 10 minutes.
 2. In your [Ruffus dashboard](https://app.ruffus.app), go to **Integrations → Shopify** (its own section in the sidebar, not under Settings) and enter the code.
@@ -30,14 +26,9 @@ The app is included with your plan:
 
 That's it. No extra charge on your Shopify bill.
 
-### Online store only
-
-No Ruffus account? Activate a standalone plan directly in the app, billed through Shopify. Two options:
-
-- **Free** — one loyalty card, wallet passes, trilingual (FR/EN/ES) programs, up to 100 active members. New signups pause once you hit the cap; members you already have keep working. Upgrade any time to lift it. Free does not include any automated lifecycle campaigns (welcome, birthday, win-back, and the rest) — those are a Standard-plan feature.
-- **Standard** — everything in Free with no member cap, plus automated lifecycle campaigns, 14-day free trial. Billed through Shopify at the price shown in the app.
-
-If you later open a physical counter, a Ruffus plan includes the app and much more — no need to keep the standalone subscription.
+<Note>
+  Don't have a Ruffus account yet? [Start one at ruffus.app](https://ruffus.app) first — the app has nothing to connect to until you do, and every plan includes it.
+</Note>
 
 ## How earning works
 
@@ -68,23 +59,16 @@ When a customer has an unlocked reward, their Ruffus wallet offers **Use online*
 
 <AccordionGroup>
   <Accordion title="What happens if I cancel my Ruffus plan?">
-    The app's bundle entitlement ends with your plan. Your Shopify connection stays installed — subscribe through Shopify to keep online earning active, or reactivate your Ruffus plan.
+    Online orders stop earning and redeeming. Your Shopify connection stays installed and stays linked, so reactivating your plan picks everything back up automatically — nothing to re-link, and no customer balances are lost in the meantime.
   </Accordion>
 
   <Accordion title="What happens if I uninstall the app?">
-    Online earning stops immediately. What happens next depends on how you activated:
+    Online earning stops immediately. Your Ruffus account, cards, staff, and customer balances are untouched — uninstalling removes the Shopify connection, not your loyalty program, and your counter keeps working exactly as before.
 
-    - **Bundled with a Ruffus plan (you have a staff account):** your Ruffus account, cards, and customer balances are untouched — only the Shopify connection goes away.
-    - **Standalone Shopify plan, no Ruffus staff account:** uninstalling triggers Shopify's shop-redaction flow, which cancels and deletes your Ruffus merchant record and its locations, not just the Shopify link. If you want to keep your loyalty program, link it to a full Ruffus account (see "Activate it" above) before uninstalling.
-
-    Either way, 48 hours later Shopify tells us to delete the connection and any unclaimed online credit — we do.
+    48 hours later Shopify tells us to delete the connection and any unclaimed online credit — we do.
   </Accordion>
 
   <Accordion title="Which orders earn credit?">
     Any order that reaches **paid** status and carries a customer email. Test orders on development stores work too — handy for trying the flow.
-  </Accordion>
-
-  <Accordion title="What happens when I hit the Free plan's 100-member cap?">
-    Members you already have keep earning and redeeming normally — the cap only pauses **new** signups until you upgrade to the Standard standalone plan (or a full Ruffus plan, if you've opened a physical counter). Upgrading lifts the cap immediately.
   </Accordion>
 </AccordionGroup>

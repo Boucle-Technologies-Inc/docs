@@ -47,18 +47,18 @@ Each key carries an explicit set of scopes, chosen at creation:
 
 ## Plan entitlements
 
+Every paid plan gets the whole API — every scope, no plan gate. There's one published rate, whether you're on the standard plan or a Custom arrangement:
+
 | Plan | API access |
 | --- | --- |
-| Basic | Not available |
-| Growth | Read scopes \+ `webhooks:manage`, 300 requests/min per key |
-| Network | All scopes, 600 requests/min per key |
+| Ruffus | All scopes, 600 requests/min per key |
 | Custom | All scopes, 600 requests/min per key |
 
-If your plan changes, existing keys are kept: requests using scopes your new plan lacks return `plan_not_entitled` until you upgrade again.
+If your subscription lapses, existing keys are kept: requests return `plan_not_entitled` until you're back on an active subscription.
 
 ## Rate limits
 
-Per-key limits are listed above; an additional per-account ceiling applies across all keys. When you exceed a limit the response is `429` with `Retry-After`, `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset` headers.
+Per-key limits are listed above; a 1,000 requests/min ceiling applies across all keys on your account. When you exceed a limit the response is `429` with `Retry-After`, `X-RateLimit-Limit`, `X-RateLimit-Remaining`, and `X-RateLimit-Reset` headers.
 
 ## Errors
 

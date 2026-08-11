@@ -6,6 +6,10 @@ description: "How simple vs. custom settings mode changes what GET /v1/cards ret
 
 Every merchant's program runs in one of two settings modes, set from **Dashboard → Settings → Program rules**. This page covers what that means for a client reading `rewardExpiryDays`, `pointsEnabled`, and related fields from the [read endpoints](/api/read-endpoints) — and the one governed setting that currently has no field in the API at all.
 
+<Warning>
+  **The public API is in private beta and not generally available during Ruffus's initial pilot.** The read endpoints this page describes return `404 not_found` for merchants who haven't been explicitly enabled for early access. See [API Overview](/api/overview) for details, or email [hello@ruffus.app](mailto:hello@ruffus.app).
+</Warning>
+
 ## Simple mode vs. custom mode
 
 By default, a merchant's program runs in **simple mode**: on Ruffus's recommended settings for stamp cooldown, PIN requirements, reward expiry, the nearby-reminder geofence, referral bonus amount, and points-earn tuning. Nothing is stored per-merchant for those fields in any meaningful sense — the merchant's own columns are ignored, and the recommended constant wins.

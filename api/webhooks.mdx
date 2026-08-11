@@ -6,6 +6,10 @@ description: "Receive signed HTTP callbacks when customers enroll, earn stamps, 
 
 Webhooks push loyalty events to your server as they happen, so you don't have to poll the [event feeds](/api/read-endpoints). Ruffus sends an HTTPS `POST` to your endpoint for every event type you subscribe to, signed so you can verify it came from us.
 
+<Warning>
+  **The public API is in private beta and not generally available during Ruffus's initial pilot.** Webhook management (the endpoints below, and the **Webhooks** page in the dashboard) is limited to merchants Ruffus has explicitly enabled for early access — everyone else gets `404 not_found`. See [API Overview](/api/overview) for details, or email [hello@ruffus.app](mailto:hello@ruffus.app).
+</Warning>
+
 Managing webhooks requires the `webhooks:manage` scope, included on every paid plan.
 
 ## Event catalog

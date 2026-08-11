@@ -6,6 +6,10 @@ description: "Authenticate to the Ruffus public API with API keys, understand sc
 
 The Ruffus API lets you read and write your loyalty data — locations, cards, customers, balances, rewards, and event feeds — from your own systems. It is a server-to-server API: requests from browsers are unsupported by design (no CORS headers are sent), because API keys must never ship in front-end code.
 
+<Warning>
+  **The public API is in private beta and not generally available.** During Ruffus's initial pilot, `/v1` access is limited to merchants Ruffus has explicitly enabled for early access — it isn't a self-serve toggle. Everyone else's requests return `404 not_found`, even with a valid key, and the **API keys** and **Webhooks** pages are unavailable from the dashboard until then. If you have an existing integration or want early access, email [hello@ruffus.app](mailto:hello@ruffus.app) — we can't promise a date yet.
+</Warning>
+
 ## Base URL
 
 ```text

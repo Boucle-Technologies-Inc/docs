@@ -6,6 +6,10 @@ description: "Reference for the Ruffus v1 write API — enrolling customers, iss
 
 All endpoints below are `POST`, live under `https://api.ruffus.app/v1`, and follow the [conventions](/api/overview) for auth, pagination, and errors. Every endpoint here supports the `Idempotency-Key` header described in [Idempotency](/api/overview#idempotency) — use it whenever a request might be retried by your infrastructure.
 
+<Warning>
+  **The public API is in private beta and not generally available during Ruffus's initial pilot.** These endpoints return `404 not_found` for merchants who haven't been explicitly enabled for early access. See [API Overview](/api/overview) for details, or email [hello@ruffus.app](mailto:hello@ruffus.app).
+</Warning>
+
 ## Enroll a customer
 
 `POST /v1/customers` · scope `customers:write`

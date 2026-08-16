@@ -27,9 +27,9 @@ Body — exactly one of `email` or `phone`, plus `location_id`:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `email` | string | |
+| `email` | string |  |
 | `phone` | string | E.164, or 10-digit NANP |
-| `location_id` | string (UUID) | |
+| `location_id` | string (UUID) |  |
 
 Enrolls the customer into every active card at that location — the same set they'd get from scanning the location's QR code.
 
@@ -66,7 +66,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
 | `location_id` | string (UUID) | required |
 | `card_id` | string (UUID) | optional — if omitted, resolves to the oldest shared card, which may not be the one you intended; multi-card merchants should always pass it explicitly. Must be the card's `family` id (see `GET /v1/cards`), not a per-location clone's own `id` — passing a clone id returns `404 not_found` |
 | `stamps` | integer | 1–100, default 1 |
-| `amount_cents` | integer | optional — the sale total in cents (e.g. `1234` = $12.34). **Required** when the target card's points earn mode is **per amount spent** — omitting it there returns `409 conflict` rather than granting the stamp with zero points. Ignored for a **flat**-points or no-points card. No upper bound: this is a machine-supplied total from your own system, not a staff-entered counter amount, so it isn't subject to the manual entry's typo guard — a genuine $15,000 sale earns its full points. |
+| `amount_cents` | integer | optional — the sale total in cents (e.g. `1234` = $$12.34). **Required** when the target card's points earn mode is **per amount spent** — omitting it there returns `409 conflict` rather than granting the stamp with zero points. Ignored for a **flat**-points or no-points card. No upper bound: this is a machine-supplied total from your own system, not a staff-entered counter amount, so it isn't subject to the manual entry's typo guard — a genuine $$15,000 sale earns its full points. |
 | `external_id` | string | optional, 1–255 chars — your own dedup key (see below) |
 
 ```json
@@ -84,9 +84,9 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../earn \
 }
 ```
 
-This endpoint earns exactly what an in-person visit earns: active [campaign](/dashboard/campaigns) bonus stamps and [VIP tier](/loyalty-card/tiers) perks apply on top of the base `stamps` you request, the same as a staff scan or a tap-to-earn visit — so the `stamps` in the response is the *total actually granted*, which can exceed what you requested when a bonus applies. A referral payout owed to whoever referred this customer is also triggered on their first-ever stamp, same as any other visit. `points` reflects [Points](/loyalty-card/points), when enabled on the target card — computed from `amount_cents` on a **per amount spent** card, or from the granted stamp count on a **flat**-points card; `0` when points aren't enabled. `unlockedRewardIds` is populated when this grant crosses the card's threshold.
+This endpoint earns exactly what an in-person visit earns: active [campaign](/dashboard/campaigns) bonus stamps and [VIP tier](/loyalty-card/tiers) perks apply on top of the base `stamps` you request, the same as a staff scan or a tap-to-earn visit — so the `stamps` in the response is the _total actually granted_, which can exceed what you requested when a bonus applies. A referral payout owed to whoever referred this customer is also triggered on their first-ever stamp, same as any other visit. `points` reflects [Points](/loyalty-card/points), when enabled on the target card — computed from `amount_cents` on a **per amount spent** card, or from the granted stamp count on a **flat**-points card; `0` when points aren't enabled. `unlockedRewardIds` is populated when this grant crosses the card's threshold.
 
-**Deduplication by `external_id`:** pass a stable key that identifies the real-world event (e.g. your own order or POS transaction id). A second request reusing the same `external_id` on the same membership doesn't re-grant — it returns `200` with `deduplicated: true` and the current balance, unchanged. `stamps` and `points` are `0` on that response: they report what *this* call granted, which is nothing — not a replay of what the original call granted. This is independent of `Idempotency-Key`: use `external_id` to make the *business action* idempotent even from a different request, and `Idempotency-Key` to make an individual *HTTP retry* safe.
+**Deduplication by `external_id`:** pass a stable key that identifies the real-world event (e.g. your own order or POS transaction id). A second request reusing the same `external_id` on the same membership doesn't re-grant — it returns `200` with `deduplicated: true` and the current balance, unchanged. `stamps` and `points` are `0` on that response: they report what _this_ call granted, which is nothing — not a replay of what the original call granted. This is independent of `Idempotency-Key`: use `external_id` to make the _business action_ idempotent even from a different request, and `Idempotency-Key` to make an individual _HTTP retry_ safe.
 
 A customer not enrolled at `location_id` returns `409 conflict` — enroll them first.
 
@@ -110,7 +110,7 @@ curl -X POST https://api.ruffus.app/v1/customers/7e31.../adjust \
 | `stamps` | integer | non-zero, magnitude ≤ 100 — positive to add, negative to remove |
 | `external_id` | string | optional, same dedup semantics as `/earn` |
 
-A positive `stamps` behaves exactly like `/earn` (can unlock a reward). A negative `stamps` removes **at most the customer's current balance** — it floors at zero rather than going negative, and never claws back a reward that's already been minted. Because of the floor, the amount actually removed can be less than what you requested:
+A positive `stamps` behaves exactly like `/earn` (can unlock a reward). A negative `stamps` removes **at most the customer's current balance** — it floors at zero rather than going negative. Because of the floor, the amount actually removed can be less than what you requested:
 
 ```json
 {
@@ -127,6 +127,8 @@ A positive `stamps` behaves exactly like `/earn` (can unlock a reward). A negati
 }
 ```
 
+If a negative adjustment drops the balance below the card's threshold while an unredeemed reward is still outstanding, that reward is **voided** — a full card is the reward, so a reward can't outlive the stamps that earned it. A `reward.voided` webhook fires for each one; the response body doesn't list them.
+
 Same enrollment requirement, `external_id` dedup, and error shape as `/earn`.
 
 ## Redeem a reward
@@ -137,16 +139,19 @@ Same enrollment requirement, `external_id` dedup, and error shape as `/earn`.
 curl -X POST https://api.ruffus.app/v1/customers/7e31.../redeem \
   -H "X-Api-Key: rk_live_..." \
   -H "Content-Type: application/json" \
-  -d '{ "short_code": "482913", "location_id": "9b2f..." }'
+  -d '{ "reward_id": "r5c8...", "location_id": "9b2f..." }'
 ```
 
-Body — exactly one of `reward_id` or `short_code`, plus `location_id`:
+Body — `reward_id` plus `location_id`:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `reward_id` | string (UUID) | |
-| `short_code` | string | the 6-digit code the customer shows you; must currently be `available` |
+| `reward_id` | string (UUID) | required — must currently be `available` |
 | `location_id` | string (UUID) | required |
+
+<Note>
+  `short_code` is no longer accepted here. Redemption by typed code has been removed: in store, a customer redeems their own full card after tapping your NFC card or scanning a device QR at the counter. `shortCode` is still returned on reward objects and in webhook payloads as a human-readable reference for support — it just isn't a redemption input. A request sending only `short_code` now fails validation for a missing `reward_id`.
+</Note>
 
 ```json
 {
@@ -161,7 +166,7 @@ Body — exactly one of `reward_id` or `short_code`, plus `location_id`:
 
 Unlike `/earn` and `/adjust`, whose `cardId` is always the card's `family` id, `/redeem`'s `cardId` is the specific program row that granted the reward — for a granular multi-location merchant this can be a per-location clone id, not the family id.
 
-The reward is looked up scoped to your merchant and this customer — one belonging to someone else, or to a different merchant, returns `404 not_found` either way. A reward tied to a different location than the one you passed returns `409 conflict`. A reward that's already been redeemed or has expired returns `409 conflict`. If the location's Ruffus subscription isn't active, `402 subscription_inactive`.
+The reward is looked up scoped to your merchant and this customer — one belonging to someone else, or to a different merchant, returns `404 not_found` either way. A reward tied to a different location than the one you passed returns `409 conflict`. A reward that isn't `available` — already redeemed, expired by inactivity, or voided because a correction dropped the card below its threshold — returns `409 conflict`. If the location's Ruffus subscription isn't active, `402 subscription_inactive`.
 
 ## Typical use
 

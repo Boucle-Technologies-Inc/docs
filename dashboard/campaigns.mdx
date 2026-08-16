@@ -31,7 +31,7 @@ Ruffus also sends a set of automatic emails and push notifications on your behal
 | [Reward ready](/loyalty-card/wallet) | A customer completes their card | Once per completed card | No |
 | Reward reminder | A completed reward sits unclaimed for 14\+ days | Every 7 days, until claimed | Indirectly — shares win-back's personal note |
 | Redemption follow-up | Right after a customer redeems a reward | Once per redemption | No |
-| Expiration reminder | A customer's earned reward is approaching its expiry (see below) | Once per reward | Indirectly — via your reward-expiry setting |
+| Inactivity-expiry warning | A customer's balance is approaching inactivity-expiry clearing (see below) | Once, before it clears | Indirectly — via your inactivity-expiry setting |
 | Slow-day nudge | A day of the week you've marked as historically quiet | Weekly, on the day(s) you pick | **Yes** — off by default |
 | Anniversary | The anniversary of a customer's join date | Once a year | No |
 | Birthday | A customer's self-reported birthday (set from their own account) | Once a year | No |
@@ -49,9 +49,9 @@ The Reward reminder email above uses this same personal-note field — it isn't 
 
 Unlike everything else in this table, the slow-day nudge is entirely opt-in: pick which day (or days) of the week tend to be quiet for your business, and Ruffus sends a nudge to recently-active-but-not-regular customers on those days. It's off until you turn it on — there's no default day.
 
-### Reward expiry and expiration reminders
+### Inactivity expiry and its warning email
 
-By default, an earned reward never expires. From **Settings → Program rules**, you can optionally set an expiry window (7, 14, 30, 60, 90, 180, or 365 days) after which an unredeemed reward becomes void. If you turn this on, Ruffus automatically sends the expiration-reminder message above while there's still time to redeem.
+By default, a customer's balance never expires. From **Settings → Program rules**, you can optionally turn on inactivity expiry: after a long stretch with no visit at all, a customer's whole balance clears — stamps and an unredeemed full card alike — and any visit resets the clock. If you turn this on, Ruffus automatically sends the expiration-reminder message above while there's still time for the customer to come back.
 
 <Note>
   Send history for anniversary, expiration, slow-day, and both reward messages is visible from **Dashboard → Campaigns → Win-back**'s history panel, alongside win-back sends — it's the one place to see recent automated sends across message types.

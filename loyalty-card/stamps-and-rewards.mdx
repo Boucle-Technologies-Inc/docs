@@ -44,24 +44,25 @@ To prevent the same visit from generating multiple stamps, Ruffus enforces a coo
 
 ## How redemption works
 
+A full card holding an unredeemed reward _is_ the reward — there's nothing separate to claim. Opening the card from home, in Wallet or a browser tab, just shows the full card with no button; redeeming only becomes possible once the customer proves they're actually at your counter.
+
 <Steps>
   <Step title="Card fills up">
-    Once a customer reaches the required stamp count, a **Redeem** button appears on their card.
+    Once a customer reaches the required stamp count, their card stops there. No more stamps land on it until it's redeemed.
   </Step>
-  <Step title="Customer generates a code">
-    Tapping Redeem shows a 6-digit code and a QR code on their screen, labeled "Show at counter."
+  <Step title="Customer proves they're at the counter">
+    They tap your NFC station card, or scan the QR sticker on one of your tills or tablets — a device-bound QR that only works in your store. Opening the card from home does nothing; one of these two is required.
   </Step>
-  <Step title="Staff enters the code">
-    At **Dashboard → Redeem terminal** (or the staff portal on any phone, tablet, or computer), staff type in or scan that code. If the merchant has redemption PINs enabled, staff also enter their 6-digit PIN.
+  <Step title="Redeem now appears">
+    Once they've tapped or scanned, their full card shows a **Redeem now** button. The customer taps it and confirms themselves — staff don't type or scan anything.
+  </Step>
+  <Step title="Staff check the confirmation screen">
+    Confirming shows the reward name and a live ticking clock, which makes a screenshot obviously fake. Staff just glance at it and hand over the reward.
   </Step>
   <Step title="Reward is marked redeemed">
-    The stamp count resets and a new cycle begins right away. The code is single-use, so the same reward can never be redeemed twice.
+    The stamp count resets the moment the customer confirms, and a new cycle starts right away.
   </Step>
 </Steps>
-
-<Note>
-  No terminal handy? If redemption PINs are enabled (**Settings → Program rules**), the customer's claim screen can offer **Staff: approve here** instead — a staff member types their PIN directly on the customer's phone to approve the redemption, no terminal needed. It uses stricter rate limits than the terminal since the device isn't staff-controlled.
-</Note>
 
 You can review redemption activity anytime at **Dashboard → Rewards**, which shows KPIs, full redemption history, and your top redeemers.
 
@@ -69,9 +70,9 @@ You can review redemption activity anytime at **Dashboard → Rewards**, which s
   Want to reward by dollars spent or specific products instead of just stamp count? See [Points](/loyalty-card/points) — an optional layer you can run alongside your stamp card (not available during the initial pilot).
 </Tip>
 
-## Reward expiry (optional)
+## Inactivity expiry (optional)
 
-By default, an earned reward never expires. From **Settings → Program rules**, you can optionally set an expiry window (7 to 365 days) after which an unredeemed reward becomes void — Ruffus automatically reminds the customer before it does. See [Campaigns & Automated Messages](/dashboard/campaigns#reward-expiry-and-expiration-reminders) for how the reminder works.
+By default, a customer's balance never expires. From **Settings → Program rules**, you can optionally turn on inactivity expiry: after a long stretch with no visit at all, a customer's whole balance clears — stamps and an unredeemed full card alike. Any visit resets the clock, so an active customer is never at risk. Turning it on isn't retroactive: every current member gets a fresh full window starting the day you enable it, so nobody is cleared for time that already passed. Ruffus sends the customer a warning email before anything clears. See [Campaigns & Automated Messages](/dashboard/campaigns#inactivity-expiry-and-its-warning-email) for how the reminder works.
 
 ## Editing your reward
 
@@ -96,7 +97,7 @@ This does mean staff have a small role to play: one tap per stamp. In exchange, 
   </Accordion>
 
   <Accordion title="A customer tries to redeem the same reward twice?">
-    It isn't possible. Each redemption code is single-use — once it's been entered at the terminal, it can't be used again.
+    It isn't possible. The moment they confirm, the stamp count resets and the card is no longer full — there's no separate code to reuse, and a screenshot of the confirmation screen doesn't work either, since it shows a live ticking clock rather than a static code.
   </Accordion>
 
   <Accordion title="A stamp didn't register after a scan?">

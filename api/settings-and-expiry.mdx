@@ -1,10 +1,10 @@
 ---
 title: "Managed Defaults and Expiry: What the API Actually Returns"
 sidebarTitle: "Settings & Expiry"
-description: "How simple vs. custom settings mode changes what GET /v1/cards returns, and the two independent expiry clocks — only one of which is exposed via the API today."
+description: "How simple vs. custom settings mode changes what GET /v1/cards returns, and why inactivity expiry — Ruffus's only expiry mechanism — isn't exposed via the API today."
 ---
 
-Every merchant's program runs in one of two settings modes, set from **Dashboard → Settings → Program rules**. This page covers what that means for a client reading `rewardExpiryDays`, `pointsEnabled`, and related fields from the [read endpoints](/api/read-endpoints) — and the one governed setting that currently has no field in the API at all.
+Every merchant's program runs in one of two settings modes, set from **Dashboard → Settings → Program rules**. This page covers what that means for a client reading `pointsEnabled` and related fields from the [read endpoints](/api/read-endpoints) — and why the governed settings, including inactivity expiry, currently have no field in the API at all.
 
 <Warning>
   **The public API is in private beta and not generally available during Ruffus's initial pilot.** The read endpoints this page describes return `404 not_found` for merchants who haven't been explicitly enabled for early access. See [API Overview](/api/overview) for details, or email [hello@ruffus.app](mailto:hello@ruffus.app).
@@ -12,47 +12,35 @@ Every merchant's program runs in one of two settings modes, set from **Dashboard
 
 ## Simple mode vs. custom mode
 
-By default, a merchant's program runs in **simple mode**: on Ruffus's recommended settings for stamp cooldown, PIN requirements, reward expiry, the nearby-reminder geofence, referral bonus amount, and points-earn tuning. Nothing is stored per-merchant for those fields in any meaningful sense — the merchant's own columns are ignored, and the recommended constant wins.
+By default, a merchant's program runs in **simple mode**: on Ruffus's recommended settings for stamp cooldown, PIN requirements, inactivity-expiry window, the nearby-reminder geofence, referral bonus amount, and points-earn tuning. Nothing is stored per-merchant for those fields in any meaningful sense — the merchant's own columns are ignored, and the recommended constant wins.
 
 A merchant can switch to **custom mode** from the dashboard to take ownership of that same set of fields. The switch is reversible: reverting to simple mode does not reset the merchant's stored values, so switching back to custom later restores exactly what they had tuned.
 
 <Note>
-  `pointsEnabled`, `referralsEnabled`, `pointsPerStamp`, and `tiersEnabled` are **not** part of this governed set — whether a feature is on is the merchant's own choice in either mode, never overridden by the recommended defaults. Only *how* an enabled feature behaves (cooldown length, expiry window, referral bonus size, per-dollar rate) is governed.
+  `pointsEnabled`, `referralsEnabled`, `pointsPerStamp`, and `tiersEnabled` are **not** part of this governed set — whether a feature is on is the merchant's own choice in either mode, never overridden by the recommended defaults. Only _how_ an enabled feature behaves (cooldown length, expiry window, referral bonus size, per-dollar rate) is governed.
 </Note>
 
 ### What this means for `GET /v1/cards` and `GET /v1/cards/{id}`
 
-Both endpoints return the **effective** value of every governed field, not the raw stored column. Concretely, `rewardExpiryDays` in the response body already reflects `resolveRules(settingsMode, …)` server-side:
-
-- Merchant in simple mode, any stored `rewardExpiryDays`: the API returns Ruffus's current recommended value (`null` — no expiry — as of this writing).
-- Merchant in custom mode: the API returns exactly what the merchant configured.
-
-There is no `settingsMode` or `simple`/`custom` field in the card payload itself, and no way to tell from the response alone which mode produced a given value — a `null` `rewardExpiryDays` on a simple-mode merchant and a `null` on a custom-mode merchant who explicitly chose "never expires" are indistinguishable over the API. If your integration needs to react to a mode *change* rather than the resulting value, there is currently no field or webhook event for that; poll the field and diff it yourself.
+None of the governed fields above — stamp cooldown, PIN requirements, inactivity-expiry window, the nearby-reminder geofence, referral bonus amount, or points-earn tuning — currently have a field on the card object, so simple vs. custom mode makes no observable difference in an API response today. `threshold` and `active` are plain merchant-owned values with no simple/custom resolution step. If your integration needs to know a program's cooldown window, its inactivity-expiry setting, or any other governed value, there is currently no field or webhook event for that — these remain dashboard-only.
 
 `pointsEnabled` is not governed, so it is always the merchant's raw stored value regardless of settings mode — no resolution step applies to it.
 
 There are no write endpoints for any of these fields. Settings changes are dashboard-only; the API is read-only for program configuration.
 
-## Two expiry clocks, one exposed
+## Inactivity expiry
 
-Ruffus runs two independent expiry mechanisms. They answer different questions and clear different things:
+Ruffus has a single expiry mechanism: inactivity expiry. It doesn't put a deadline on any one reward — it clears a customer's entire dormant balance (stamps, points, and any unredeemed reward together) after a long stretch with no visit at all. See [Stamps and Rewards](/loyalty-card/stamps-and-rewards#inactivity-expiry-optional) for the customer-facing behavior.
 
-| | Reward expiry | Inactivity expiry |
-|---|---|---|
-| Question it answers | Does an *earned* reward have a deadline? | Does a *dormant* balance eventually clear? |
-| What it clears | One unredeemed reward | Stamps, points, and unclaimed rewards together |
-| Default | Off (`rewardExpiryDays: null`) | Off |
-| Resets on | N/A — a reward either gets redeemed or expires | Any visit — stamping, redeeming, or earning points resets the clock to zero |
-| Governed field | `loyaltyPrograms.rewardExpiryDays` | `loyaltyPrograms.progressExpiryMonths` |
-| In the public API | **Yes** — `rewardExpiryDays` on the card object | **No** — not selected by any `/v1` route as of this writing |
+|  | Inactivity expiry |
+| --- | --- |
+| What it clears | Stamps, points, and an unredeemed reward together |
+| Default | Off |
+| Resets on | Any visit — stamping, redeeming, or earning points resets the clock to zero |
+| Governed field | `loyaltyPrograms.progressExpiryMonths` |
+| In the public API | **No** — not selected by any `/v1` route as of this writing |
 
-### Reward expiry
-
-Documented in full at [Stamps and Rewards](/loyalty-card/stamps-and-rewards#reward-expiry-optional). The field you read from the API, `rewardExpiryDays`, is a nullable integer — `null` means no expiry, otherwise the number of days after a reward unlocks before it voids.
-
-### Inactivity expiry
-
-A separate, merchant-configured window (in months) after which a customer's *entire* balance on a card — stamps, points, and any unredeemed reward — clears if they have not visited at all in that window. Turning it on for the first time does not retroactively evaluate anyone's existing last-visit date: every current member is given a full, fresh window measured from the day the setting is turned on, so nobody is cleared for time that already elapsed before the merchant opted in.
+A merchant-configured window (in months) after which a customer's _entire_ balance on a card — stamps, points, and any unredeemed reward — clears if they have not visited at all in that window. Turning it on for the first time does not retroactively evaluate anyone's existing last-visit date: every current member is given a full, fresh window measured from the day the setting is turned on, so nobody is cleared for time that already elapsed before the merchant opted in.
 
 Customers receive a warning email two weeks ahead of their clear date, and the date itself is surfaced on their card view and on their Apple/Google Wallet pass — none of which currently has an API-visible counterpart. There is no `progressExpiryMonths` field on the card object, no `membership.expiresAt` on the [membership balance](/api/read-endpoints#membership-balances) response, and no webhook event fires when a balance clears via this path (compare the [event catalog](/api/webhooks#event-catalog), which covers enrollment, stamps, and reward unlock/redemption only). Reading a customer's stamp and points balance directly via [`GET /v1/customers/{ref}/memberships`](/api/read-endpoints#membership-balances) after the fact is the only way to observe the result today.
 

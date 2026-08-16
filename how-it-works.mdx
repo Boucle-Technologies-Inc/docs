@@ -18,16 +18,18 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
       If you run multiple registers or devices at one location, each device gets its own staff QR variant, so a stamp request routes its push notification to the specific device where the customer is standing — not to every device at once.
     </Note>
 
+    A completed card can't earn a new stamp until it's redeemed — the reward is the next free item, so nothing is lost by pausing there.
+
     ## Redeeming rewards
 
-    When a customer's card is full, they see a **Redeem** button that generates a 6-digit code (and QR) on their screen — "Show at counter." Staff enter or scan that code in the **Redeem Terminal** (Dashboard → Redeem terminal, or the staff portal on any phone, tablet, or computer). If you've enabled redemption PINs in Settings → Program rules, staff also enter their 6-digit PIN. Once redeemed, the stamp count resets and a new cycle starts — double-redemption isn't possible.
+    A full card holding an unredeemed reward _is_ the reward — there's nothing for you or your staff to approve. Opening the card from home shows the full card with no button; the customer has to prove they're at your counter first, by tapping your NFC station card or scanning the QR sticker on one of your tills or tablets. Only then does a **Redeem now** button appear, which the customer taps and confirms themselves. Confirming shows the reward name and a live ticking clock — a screenshot is obviously fake since the clock doesn't move — so staff just glance at the screen and hand over the reward. The stamp count resets the moment the customer confirms, and a new cycle starts.
 
     ## Fraud prevention
 
     By default, every stamp passes through the same set of checks: the staff-approval gate described above, server-side verification, and a cooldown period between stamps for the same customer (60 minutes by default, adjustable — or disabled — in Settings → Program rules). Together these mean a screenshotted or replayed QR code does nothing on its own; a stamp only ever lands after a live approval.
 
     <Note>
-      New accounts start with **Require staff PIN** off, so any staff member can approve a stamp request without entering a PIN first — see [Settings](/dashboard/settings#staff-approval-and-fast-mode). Turning it on doesn't add or remove the approval tap itself, which always happens either way; it just requires staff to enter their own PIN before stamping or redeeming, which gives you per-staff attribution and PIN protection — worth enabling once you have real staff beyond yourself. Ruffus also watches for other unusual patterns in the background regardless of this setting; see [Settings](/dashboard/settings#fraud-monitoring).
+      New accounts start with **Require staff PIN** off, so any staff member can approve a stamp request without entering a PIN first — see [Settings](/dashboard/settings#staff-approval-and-fast-mode). Turning it on doesn't add or remove the approval tap itself, which always happens either way; it just requires staff to enter their own PIN before stamping, which gives you per-staff attribution and PIN protection — worth enabling once you have real staff beyond yourself. Ruffus also watches for other unusual patterns in the background regardless of this setting; see [Settings](/dashboard/settings#fraud-monitoring).
     </Note>
 
     ## Editing rewards and stamp thresholds
@@ -53,7 +55,7 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
 
     ## Claiming a reward
 
-    When your card is full, tap **Redeem** to generate a 6-digit code and QR on your screen. Show it to staff at the counter, they'll enter it in their terminal, and your reward is marked redeemed on the spot — then a fresh card starts.
+    A full card holding your reward _is_ the reward — nothing more to claim. Opening it from home just shows the full card with no button. At the counter, tap the merchant's NFC card or scan the QR sticker on one of their tills or tablets to prove you're there, and a **Redeem now** button appears. Tap it and confirm yourself — your screen shows the reward name and a live ticking clock so staff can see it's genuine, and the moment you confirm, your stamp count resets and a fresh card starts.
 
     ## No duplicates, no cheating
 

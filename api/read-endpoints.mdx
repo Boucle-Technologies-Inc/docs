@@ -47,7 +47,6 @@ Deleted locations never appear.
   "name": { "fr": "Carte café", "en": "Coffee card", "es": null },
   "rewardLabel": { "fr": "Café gratuit", "en": "Free coffee", "es": null },
   "threshold": 10,
-  "rewardExpiryDays": null,
   "active": true,
   "pointsEnabled": false,
   "createdAt": "2026-05-01T14:05:00.000Z"
@@ -113,12 +112,11 @@ One entry per card per location the customer is enrolled in:
   "cardId": "c1a2…",
   "customerId": "7e31…",
   "locationId": "9b2f…",
-  "earnedAt": "2026-07-01T16:40:00.000Z",
-  "expiresAt": null
+  "earnedAt": "2026-07-01T16:40:00.000Z"
 }
 ```
 
-`shortCode` is the 6-digit code the customer shows at the counter. Ordered by `earnedAt`, then id.
+`shortCode` is a human-readable reference for support — it isn't a redemption input. Ordered by `earnedAt`, then id.
 
 ## Event feeds
 

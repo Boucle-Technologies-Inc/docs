@@ -15,18 +15,17 @@ Pick a subdomain for your dashboard — `yourshop.ruffus.app` instead of the def
 **Program rules** (per card, if you run more than one) bundles the settings that control day-to-day stamping and redemption behaviour:
 
 - **Anti-fraud delay** — the minimum gap between stamp requests from the same customer at the same location, so one visit can't be stamped twice. Defaults to 60 minutes; can be turned off entirely.
-- **PIN required to redeem** — off by default. When on, a staff member must enter their PIN for every redemption. This is separate from Require staff PIN below.
-- **Reward expiry** — off by default, so an unused reward never expires. Turn it on and pick a window — 7, 14, 30, 60, 90, 180, or 365 days — after which an unredeemed reward voids.
+- **Inactivity expiry** — off by default, so a dormant balance never clears. Turn it on and pick a window, in months, after which a customer's entire balance — stamps and an unredeemed full card alike — clears if they haven't visited at all in that window. Any visit resets the clock, and turning the setting on for the first time gives every current member a fresh window starting that day, so nobody is cleared for time that already passed.
 - **Require staff PIN** and the merchant email toggles below also live in this same panel.
 
 ## Staff PIN
 
 Every stamp still requires a staff member to tap approve in the staff portal — the fraud-prevention model described in [How It Works](/how-it-works), and that approval tap can't be turned off. **Require staff PIN** is a narrower, separate toggle: whether staff must also enter their own PIN before stamping or redeeming.
 
-A brand-new merchant starts with this **off**, so the welcome-package staff QR works immediately without setting up PINs first. Turn it **on** once you've added real staff, for per-staff attribution and PIN protection on stamping, bulk stamps, and redemptions.
+A brand-new merchant starts with this **off**, so the welcome-package staff QR works immediately without setting up PINs first. Turn it **on** once you've added real staff, for per-staff attribution and PIN protection on stamping and bulk stamps.
 
 <Warning>
-  Turning Require staff PIN off does not skip the approval tap — a staff member still has to approve every stamp request. It only removes the PIN step and per-staff attribution layered on top of that approval; anyone with access to the staff screen can then stamp or redeem without entering a PIN.
+  Turning Require staff PIN off does not skip the approval tap — a staff member still has to approve every stamp request. It only removes the PIN step and per-staff attribution layered on top of that approval; anyone with access to the staff screen can then stamp without entering a PIN.
 </Warning>
 
 ## Merchant email preferences

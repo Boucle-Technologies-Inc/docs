@@ -54,7 +54,9 @@
               "dashboard/customers",
               "dashboard/multi-location",
               "dashboard/settings",
-              "dashboard/campaigns"
+              "dashboard/campaigns",
+              "dashboard/staff-playbook",
+              "dashboard/support"
             ]
           },
           {

@@ -26,7 +26,7 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
 
     ## Fraud prevention
 
-    By default, every stamp passes through the same set of checks: the staff-approval gate described above, server-side verification, and a cooldown period between stamps for the same customer (60 minutes by default, adjustable — or disabled — in Settings → Program rules). Together these mean a screenshotted or replayed QR code does nothing on its own; a stamp only ever lands after a live approval.
+    By default, every stamp passes through the same set of checks: the staff-approval gate described above, server-side verification, and a cooldown period between stamps for the same customer (10 minutes by default, adjustable — or disabled — in Settings → Program rules). Together these mean a screenshotted or replayed QR code does nothing on its own; a stamp only ever lands after a live approval.
 
     <Note>
       New accounts start with **Require staff PIN** off, so any staff member can approve a stamp request without entering a PIN first — see [Settings](/dashboard/settings#staff-approval-and-fast-mode). Turning it on doesn't add or remove the approval tap itself, which always happens either way; it just requires staff to enter their own PIN before stamping, which gives you per-staff attribution and PIN protection — worth enabling once you have real staff beyond yourself. Ruffus also watches for other unusual patterns in the background regardless of this setting; see [Settings](/dashboard/settings#fraud-monitoring).

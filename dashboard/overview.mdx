@@ -12,9 +12,9 @@ Everything you do to run your loyalty program happens at [app.ruffus.app](https:
 
 ## The navigation
 
-The sidebar is organized into four sections — **Main**, **Grow**, **Developer**, and **Integrations**. Account-level pages (Settings, Billing, Ideas, Guides) live together in the account menu, opened from your avatar, not in the sidebar itself.
+The sidebar has three groups: an unlabelled top group for the screens you live in, then **Tools**, then **Developer**. Account-level pages open from your avatar in the top-right, not from the sidebar.
 
-### Main
+### Top group
 
 <CardGroup cols={2}>
   <Card title="Dashboard" icon="chart-line">
@@ -38,11 +38,15 @@ The sidebar is organized into four sections — **Main**, **Grow**, **Developer*
   </Card>
 </CardGroup>
 
-### Grow
+### Tools
 
 <CardGroup cols={2}>
   <Card title="Campaigns" icon="megaphone">
     Run bonus-stamp and new-member-bonus promos, and customize your win-back emails. See [Campaigns & Automated Messages](/dashboard/campaigns).
+  </Card>
+
+  <Card title="Staff playbook" icon="book-open">
+    The printable counter sheet that teaches your staff how to explain the tap and handle a full card. See [Staff Playbook](/dashboard/staff-playbook).
   </Card>
 
   <Card title="Tiers" icon="trophy">
@@ -62,11 +66,11 @@ The sidebar is organized into four sections — **Main**, **Grow**, **Developer*
   </Card>
 
   <Card title="Card Studio" icon="image">
-    Design your card's look, download your printable QR poster, manage and order NFC station cards, print the [staff playbook](/dashboard/staff-playbook), and generate printable stamp codes for delivery and online orders. See [NFC Station Cards](/loyalty-card/nfc-cards) and [Printable Stamp Codes](/loyalty-card/printable-stamp-codes).
+    Design your card's look, download your printable QR poster, manage and order NFC station cards, and generate printable stamp codes for delivery and online orders. See [NFC Station Cards](/loyalty-card/nfc-cards) and [Printable Stamp Codes](/loyalty-card/printable-stamp-codes).
   </Card>
 
-  <Card title="Support" icon="headset">
-    Ask the built-in assistant or open a tracked ticket, and follow it to resolution. Owner-only. See [Support](/dashboard/support).
+  <Card title="Practice" icon="flask">
+    Rehearse the whole loop — join, stamp, redeem — against a practice program, without touching your real members or your trial clock.
   </Card>
 </CardGroup>
 
@@ -74,21 +78,17 @@ The sidebar is organized into four sections — **Main**, **Grow**, **Developer*
 
 <CardGroup cols={2}>
   <Card title="API Keys" icon="key">
-    Create and manage API keys for the [Developer API](/api/overview). Only shown once this feature is enabled for your account — not available during the initial pilot.
+    Create and manage API keys for the [Developer API](/api/overview).
   </Card>
 
   <Card title="Webhooks" icon="webhook">
-    Subscribe an endpoint to Ruffus events — stamps, redemptions, and more. See [Webhooks](/api/webhooks). Only shown once this feature is enabled for your account — not available during the initial pilot.
+    Subscribe an endpoint to Ruffus events — stamps, redemptions, and more. See [Webhooks](/api/webhooks).
   </Card>
 </CardGroup>
 
-### Integrations
-
-<CardGroup cols={2}>
-  <Card title="Integrations" icon="storefront">
-    Connect Shopify so paid online orders earn stamps and points automatically. Zapier and Make are listed here as coming soon.
-  </Card>
-</CardGroup>
+<Note>
+  The Developer group only appears once API access is enabled for your account. It isn't available during the initial pilot, so most accounts won't see this section at all.
+</Note>
 
 ### Account menu
 
@@ -103,8 +103,16 @@ Opened from your avatar, not the sidebar:
     Locations, program rules, your white-label domain, language, and account settings. See [Program Settings](/dashboard/settings).
   </Card>
 
+  <Card title="Shopify" icon="storefront">
+    Connect Shopify so paid online orders earn stamps and points automatically. See [Shopify](/integrations/shopify).
+  </Card>
+
   <Card title="Guides" icon="sparkles">
     Short how-to guides for getting more out of your program.
+  </Card>
+
+  <Card title="Support" icon="headset">
+    Ask the built-in assistant or open a tracked ticket, and follow it to resolution. Owner-only. See [Support](/dashboard/support).
   </Card>
 
   <Card title="Billing" icon="credit-card">

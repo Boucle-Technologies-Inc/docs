@@ -1,7 +1,7 @@
 ---
 title: "Customizing Your Loyalty Card: Logo, Colours, Stamps, and Rewards"
 sidebarTitle: "Customization"
-description: "Use Card Studio to brand your loyalty card — logo, colours, card image, stamp shape and icon, stamp count, and reward label in French, English, and Spanish."
+description: "Use Card Studio to brand your loyalty card — card style, logo, colours, card image, stamp shape and icon, progress display, stamp count, and reward label in French, English, and Spanish."
 ---
 
 Every loyalty card in Ruffus is designed in **Card Studio**, found at **Dashboard → Card Studio**. This is where you control how your card looks and how many stamps it takes to earn a reward. Changes are owner-only and apply immediately — no publishing step, no waiting.
@@ -15,6 +15,10 @@ The studio centres on a live preview of the card itself — the exact card your 
 ## What you can customize
 
 <CardGroup cols={2}>
+  <Card title="Card style" icon="wand-magic-sparkles">
+    Choose how the whole card is painted: **Gradient**, **Foil**, **Photo**, or **Solid**. See [Card style](#card-style) below.
+  </Card>
+
   <Card title="Logo" icon="image">
     Upload your business logo. It appears at the top of the customer card, on the QR poster, and inside the Apple and Google Wallet passes.
   </Card>
@@ -35,6 +39,10 @@ The studio centres on a live preview of the card itself — the exact card your 
     Set the fill style, icon, and colour used for earned stamps so they match your brand at a glance.
   </Card>
 
+  <Card title="Progress display" icon="chart-simple">
+    Show progress as individual **stamps** or as a single **progress bar**.
+  </Card>
+
   <Card title="Stamp count" icon="grid-2">
     Decide how many stamps a customer needs to collect before their reward unlocks.
   </Card>
@@ -42,6 +50,48 @@ The studio centres on a live preview of the card itself — the exact card your 
 
 <Note>
   Fill style and icon only apply to **circle** stamps. Pick any other shape — square, triangle, diamond, star, hexagon, or heart — and earned stamps always render as a plain solid fill in your stamp colour, regardless of the fill style or icon you've chosen. If you want a checkmark or an icon on your earned stamps, keep the stamp shape set to circle.
+</Note>
+
+## Card style
+
+**Card style** decides how the whole card is painted. It's the first choice worth making, because the rest of the settings sit on top of it.
+
+<CardGroup cols={2}>
+  <Card title="Gradient" icon="circle-half-stroke">
+    The default. Your brand colour is deepened into a gradient, and earned stamps are struck like small metal coins pressed into the card.
+  </Card>
+
+  <Card title="Foil" icon="gem">
+    A deep ink card with your colour struck into it as metal. The card itself stays dark; your brand shows up in the stamps and the lettering rather than in the background.
+  </Card>
+
+  <Card title="Photo" icon="camera">
+    Your own photo, with the card's details on a frosted glass panel over it. No photo yet? The card shows a slow drift of colour drawn from your brand colour instead.
+  </Card>
+
+  <Card title="Solid" icon="square">
+    One flat colour, edge to edge. The simplest option, and the one to pick if you want nothing competing with your logo.
+  </Card>
+</CardGroup>
+
+<Tip>
+  **Photo** works best with a wide shot that has some empty space in the upper half — the panel covers the bottom of the card, and your business name sits over the top. A busy photo still reads fine: Ruffus measures your image and adjusts the panel and the text so they stay legible on it, whether the photo is dark or pale.
+</Tip>
+
+Your brand colour still matters on every style — it just does a different job in each. On **Gradient** it becomes the card face. On **Foil** it becomes the metal, and the card behind it stays dark. On **Photo** it colours the drift behind the photo. On **Solid** it is the card.
+
+<Tip>
+  **Foil** is the one style that works with any brand colour, including very dark ones. A near-black brand would make a dim gradient card, but as metal it reads as warm gold — Ruffus brightens the colour to metal while keeping its hue, so the stamps still catch the light against the dark card.
+</Tip>
+
+## Progress display
+
+By default a card shows one stamp per visit, in the shape you chose. Switching to a **progress bar** replaces the grid with a single bar that fills as customers earn.
+
+A bar suits high targets — a card that takes twenty visits shows twenty small stamps, which get hard to read on a phone. It also suits goals that never divided cleanly into stamps in the first place.
+
+<Note>
+  Stamp shape, fill style, and icon apply to the stamp grid only. Choose the progress bar and those controls are hidden, because there are no individual stamps left to mark.
 </Note>
 
 ## Reward label in three languages

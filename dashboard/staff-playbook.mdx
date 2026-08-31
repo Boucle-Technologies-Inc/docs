@@ -22,6 +22,18 @@ The playbook exists to stop that. It's the same content in two places: a sheet y
   Both read from one source, so the wall and the till can't drift apart. The reward line fills in your real threshold and reward — "Collect 8 stamps, get: free coffee" — rather than a placeholder.
 </Note>
 
+## Three ways a stamp happens
+
+The terminal is a guest on hardware another POS owns, so the counter isn't one flow with fallbacks — it's three, and a store picks by what hardware it has. The playbook opens with all three so a new staff member knows which one is yours.
+
+| Mode | When it applies | What staff do |
+|---|---|---|
+| **Tap the base** | A base is out on your counter. | Nothing — the customer taps it and the stamp lands on its own. |
+| **Show the code on your screen** | No base out, or it isn't responding. | Open the terminal, tap the QR code to enlarge it, turn the screen to the customer. Their scan closes the code and shows you **Approve**. |
+| **The printed poster** | A poster is up where customers can reach it. | They scan it themselves. Keep the terminal open, or turn notifications on, so you see the request in time. |
+
+Only the third needs a staff approval you have to notice, because it's the only one with no structural proof the customer is standing there. The first two put the customer in front of you by construction.
+
 ## What it covers
 
 <AccordionGroup>
@@ -34,7 +46,7 @@ The playbook exists to stop that. It's the same content in two places: a sheet y
   </Accordion>
 
   <Accordion title="A full card">
-    A full card stops collecting — the full card **is** the reward. The customer taps the base exactly like any other visit, their full card opens, and they confirm the reward themselves on their own phone. Their screen shows the reward name and a countdown; staff read it and hand the reward over. Nothing to type, nothing to scan.
+    A full card stops collecting — the full card **is** the reward. The customer taps the base exactly like any other visit, their full card opens, and they confirm the reward themselves on their own phone. A **Hold to validate** button then appears on their screen: a staff member presses and holds it for about a second and a half, and it reads **Validated**. There's no code to type and nothing to scan, but the hold is the step that actually releases the reward — hold it, then hand the reward over. If it sits longer than two minutes the window closes and the customer taps the base again.
   </Accordion>
 
   <Accordion title="What to actually say">

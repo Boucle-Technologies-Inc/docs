@@ -22,7 +22,9 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
 
     ## Redeeming rewards
 
-    A full card holding an unredeemed reward _is_ the reward — there's nothing for you or your staff to approve. Opening the card from home shows the full card with no button; the customer has to prove they're at your counter first, by tapping your NFC station card or scanning the QR sticker on one of your tills or tablets. Only then does a **Redeem now** button appear, which the customer taps and confirms themselves. Confirming shows the reward name and a live ticking clock — a screenshot is obviously fake since the clock doesn't move — so staff just glance at the screen and hand over the reward. The stamp count resets the moment the customer confirms, and a new cycle starts.
+    A full card holding an unredeemed reward _is_ the reward — there's nothing separate for the customer to claim. Opening the card from home shows the full card with no button; the customer has to prove they're at your counter first, by tapping your NFC station card or scanning the QR sticker on one of your tills or tablets. Only then does a **Redeem now** button appear, which the customer taps and confirms themselves.
+
+    Confirming puts a **Hold to validate** button on their screen, and that is your staff's one action: press and hold it for about a second and a half, on the customer's phone. A screenshot can't be held down. The stamp count resets when the hold completes — not when the customer confirms — and a new cycle starts. If nobody holds the button within two minutes the window closes and the customer taps again to restart.
 
     ## Fraud prevention
 
@@ -55,7 +57,7 @@ description: "Understand the full stamp lifecycle — from QR scan to staff-appr
 
     ## Claiming a reward
 
-    A full card holding your reward _is_ the reward — nothing more to claim. Opening it from home just shows the full card with no button. At the counter, tap the merchant's NFC card or scan the QR sticker on one of their tills or tablets to prove you're there, and a **Redeem now** button appears. Tap it and confirm yourself — your screen shows the reward name and a live ticking clock so staff can see it's genuine, and the moment you confirm, your stamp count resets and a fresh card starts.
+    A full card holding your reward _is_ the reward — nothing more to claim. Opening it from home just shows the full card with no button. At the counter, tap the merchant's NFC card or scan the QR sticker on one of their tills or tablets to prove you're there, and a **Redeem now** button appears. Tap it and confirm yourself, then hand your phone to staff for a moment: they press and hold a **Hold to validate** button on your screen, and once it reads **Validated** your stamp count resets and a fresh card starts.
 
     ## No duplicates, no cheating
 

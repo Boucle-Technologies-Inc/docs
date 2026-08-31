@@ -13,11 +13,39 @@ From **Dashboard → Campaigns**, you can launch:
 - **Bonus stamps** — customers earn extra stamps (up to 12) on top of the normal one per approved stamp request, for a limited time.
 - **New-member bonus** — customers who join during the promo window get a stamp-count head start.
 
-Both can be scoped to a specific [location](/dashboard/multi-location) and a specific [card](/loyalty-card/multiple-cards), with a start and end date — handy for a seasonal push without touching your permanent program rules.
+- **Wallet push** — a short notification you write yourself, delivered to the lock screens of customers who saved your card to Apple or Google Wallet. See [Wallet push](#wallet-push) below.
+
+All three can be scoped to a specific [location](/dashboard/multi-location) and a specific [card](/loyalty-card/multiple-cards), with a start and end date — handy for a seasonal push without touching your permanent program rules.
 
 <Tip>
   For an always-on reward instead of a limited-time promo, see [VIP Tiers](/loyalty-card/tiers) — tiers grant a standing bonus-stamp perk to loyal customers rather than everyone, for a limited window. Not available during the initial pilot.
 </Tip>
+
+## Wallet push
+
+**Wallet push** is the one message you compose yourself. You write a **notification title** and a line of **notification text**, and it reaches customers who saved your card to Apple or Google Wallet — on the lock screen, without an app.
+
+It's deliberately narrow, and the limits are not adjustable:
+
+<CardGroup cols={2}>
+  <Card title="Four sends a month" icon="calendar">
+    Per merchant, on the calendar month, resetting on the 1st. The composer shows **"N of 4 used this month"** before you send.
+  </Card>
+
+  <Card title="One a week per customer" icon="user-clock">
+    A customer who received any merchant's wallet campaign in the last 7 days is skipped. Someone holding five Ruffus cards does not get five pushes in a week.
+  </Card>
+</CardGroup>
+
+Before sending, the composer shows an **estimated recipients** count for the scope you picked, so you can see how narrow a store-or-card filter makes the send.
+
+<Note>
+  **Who receives it.** Only customers whose pass is still installed. Saving your card to a wallet is what opts a customer in, so there's no separate list to build — but because deleting the pass would also cost them their stamps, customers can switch merchant marketing off from their own card's account screen without giving up the card. Those customers are excluded too.
+</Note>
+
+<Warning>
+  A paused card can't be targeted. Resume it first, or scope the campaign to a card that's running.
+</Warning>
 
 ## Automatic lifecycle messages
 

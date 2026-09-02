@@ -1,7 +1,7 @@
 ---
 title: "Dashboard Overview: A Tour of Your Ruffus Nav"
 sidebarTitle: "Overview"
-description: "A tour of the Ruffus merchant dashboard — the Dashboard, Members, Activity, Rewards, and other sections you'll use every day, and what each one shows you."
+description: "A tour of the Ruffus merchant dashboard — Home, Customers, My cards, Campaigns, In store, and Settings, and what each one shows you."
 ---
 
 Everything you do to run your loyalty program happens at [app.ruffus.app](https://app.ruffus.app) — your Ruffus dashboard. This page walks through the navigation and what you'll find on the overview screen itself.
@@ -12,123 +12,57 @@ Everything you do to run your loyalty program happens at [app.ruffus.app](https:
 
 ## The navigation
 
-The sidebar has three groups: an unlabelled top group for the screens you live in, then **Tools**, then **Developer**. Account-level pages open from your avatar in the top-right, not from the sidebar.
-
-### Top group
+The sidebar is six flat entries, no section headings: **Home**, **Customers**, **My cards**, **Campaigns**, **In store**, and **Settings**. Several of those open with a tab strip across the top rather than a further level of sidebar. Support and Billing open from your avatar in the top-right, not from the sidebar.
 
 <CardGroup cols={2}>
-  <Card title="Dashboard" icon="chart-line">
-    The overview screen — today's activity, member stats, and program health at a glance. Covered in detail below.
+  <Card title="Home" icon="chart-line">
+    Tabs: **Overview** and **Activity**. Overview is today's activity, member stats, and program health at a glance — covered in detail below. Activity is the running log of stamp requests, approvals, and redemptions, with date-range CSV export — including redemptions, so this is also where to review redemption history and top redeemers.
   </Card>
 
-  <Card title="Members" icon="users">
-    Your full member list, searchable and sortable, plus a detail timeline for every customer.
+  <Card title="Customers" icon="users">
+    Your full customer list, searchable and sortable, plus a detail timeline for every customer. Renamed from "Members." The **Import** flow — bringing in an existing customer list — is a CTA on this page rather than its own destination.
   </Card>
 
-  <Card title="Cards" icon="layer-group">
-    Create and manage multiple loyalty cards — names, stamp counts, and rewards per card. See [Multiple Cards](/loyalty-card/multiple-cards).
+  <Card title="My cards" icon="layer-group">
+    Tabs: **Cards**, **Card Studio**, **Points\***, **Products\***, **Redemption items\***, **Tiers\***. Create and manage multiple loyalty cards (see [Multiple Cards](/loyalty-card/multiple-cards)), design your card's look and live-preview its poster and wallet passes in Card Studio, and configure points and VIP tiers once those are enabled for your account (\* gated, not available during the initial pilot).
   </Card>
 
-  <Card title="Activity" icon="list">
-    A running log of stamp requests, approvals, and redemptions, with date-range CSV export.
-  </Card>
-
-  <Card title="Rewards" icon="gift">
-    Redemption KPIs, full redemption history, and your top redeemers.
-  </Card>
-</CardGroup>
-
-### Tools
-
-<CardGroup cols={2}>
   <Card title="Campaigns" icon="megaphone">
-    Run bonus-stamp and new-member-bonus promos, and customize your win-back emails. See [Campaigns & Automated Messages](/dashboard/campaigns).
+    Run bonus-stamp and new-member-bonus promos, and compose a wallet push. See [Campaigns & Automated Messages](/dashboard/campaigns). Win-back customization now lives under Settings, not here.
   </Card>
 
-  <Card title="Staff playbook" icon="book-open">
-    The printable counter sheet that teaches your staff how to explain the tap and handle a full card. See [Staff Playbook](/dashboard/staff-playbook).
+  <Card title="In store" icon="storefront">
+    Tabs: **Poster & QR**, **Stamp codes**, **NFC cards**, **Devices**, **Staff**, **Staff playbook**, **Practice**. This is where you download or print your QR poster, manage NFC station cards, generate printable stamp codes, register counter devices, manage staff PINs, print the staff playbook, and rehearse in Practice Mode. Renamed from "Poster & QR" — the poster itself is now just the first tab. Managers land here and see only Poster & QR, Stamp codes, NFC cards, and Devices.
   </Card>
 
-  <Card title="Tiers" icon="trophy">
-    VIP tiers that grant a standing bonus-stamp perk to your most loyal customers. Only shown once this feature is enabled for your account — not available during the initial pilot. See [VIP Tiers](/loyalty-card/tiers).
-  </Card>
-
-  <Card title="Points" icon="coins">
-    Configure earn rules, your product catalog, and your points redemption catalog. Only shown once points are turned on for a card — not available during the initial pilot. See [Points](/loyalty-card/points).
-  </Card>
-
-  <Card title="Import" icon="file-import">
-    Bring in an existing customer list to get your program started with a head start.
-  </Card>
-
-  <Card title="Staff" icon="id-badge">
-    Create and manage the 6-digit PINs your staff use at the counter.
-  </Card>
-
-  <Card title="Card Studio" icon="image">
-    Design your card's look, download your printable QR poster, manage and order NFC station cards, and generate printable stamp codes for delivery and online orders. See [NFC Station Cards](/loyalty-card/nfc-cards) and [Printable Stamp Codes](/loyalty-card/printable-stamp-codes).
-  </Card>
-
-  <Card title="Practice" icon="flask">
-    Rehearse the whole loop — join, stamp, redeem — against a practice program, without touching your real members or your trial clock.
+  <Card title="Settings" icon="gear">
+    Tabs: **General**, **Win-back**, **Integrations**, **Developer\***. Program rules, staff PIN and approval options, referrals, language, and your white-label domain live under General; win-back's personal note lives under its own tab; the Shopify link-code form lives under Integrations; API keys and webhooks live under Developer (gated, not available during the initial pilot). See [Program Settings](/dashboard/settings).
   </Card>
 </CardGroup>
-
-### Developer
-
-<CardGroup cols={2}>
-  <Card title="API Keys" icon="key">
-    Create and manage API keys for the [Developer API](/api/overview).
-  </Card>
-
-  <Card title="Webhooks" icon="webhook">
-    Subscribe an endpoint to Ruffus events — stamps, redemptions, and more. See [Webhooks](/api/webhooks).
-  </Card>
-</CardGroup>
-
-<Note>
-  The Developer group only appears once API access is enabled for your account. It isn't available during the initial pilot, so most accounts won't see this section at all.
-</Note>
 
 ### Account menu
 
 Opened from your avatar, not the sidebar:
 
 <CardGroup cols={2}>
-  <Card title="Ideas" icon="lightbulb">
-    Inspiration and suggestions for getting more out of your program.
-  </Card>
-
-  <Card title="Settings" icon="gear">
-    Locations, program rules, your white-label domain, language, and account settings. See [Program Settings](/dashboard/settings).
-  </Card>
-
-  <Card title="Shopify" icon="storefront">
-    Connect Shopify so paid online orders earn stamps and points automatically. See [Shopify](/integrations/shopify).
-  </Card>
-
-  <Card title="Guides" icon="sparkles">
-    Short how-to guides for getting more out of your program.
-  </Card>
-
   <Card title="Support" icon="headset">
-    Ask the built-in assistant or open a tracked ticket, and follow it to resolution. Owner-only. See [Support](/dashboard/support).
+    Tabs: **Tickets**, **Guides**, **Ideas**. Ask the built-in assistant or open a tracked ticket and follow it to resolution; Guides and Ideas (formerly their own account-menu items) are now tabs here. Owner-only. See [Support](/dashboard/support).
   </Card>
 
   <Card title="Billing" icon="credit-card">
-    Your plan, payment method, and invoices — a sibling of Settings in the account menu, not nested under it.
+    Your plan, payment method, and invoices.
   </Card>
 </CardGroup>
 
 ## What's on the overview page
 
-The **Dashboard** screen is your home base. At a glance it shows:
+**Home**'s Overview tab is your home base. At a glance it shows:
 
 - **Stamps today** — how many stamps were approved so far today.
 - **Member stats** — your total member count and recent growth.
 - **In wallets** — how many members have the card saved to Apple Wallet or Google Wallet, split by platform, as a percentage of your total members — plus how many have since removed it.
 - **Activity feed** — a running stream of recent stamp requests and redemptions.
-- **Close to reward** — customers who are near completing their card, so you know who's about to come back for a redemption. Click through to see them as a filtered segment on [Members](/dashboard/customers).
+- **Close to reward** — customers who are near completing their card, so you know who's about to come back for a redemption. Click through to see them as a filtered segment on [Customers](/dashboard/customers).
 
 <Note>
   Apple Wallet removals are detected precisely, since the device tells Ruffus when a pass is unregistered. Google Wallet has no equivalent removal signal, so the "removed" count only reflects Apple.
@@ -140,13 +74,13 @@ Scroll further and the detailed view adds:
 - A **period chart** you can switch between 7, 30, and 90-day windows.
 - A **busy times heatmap** — stamp activity by day of week and daypart (morning, lunch, afternoon, evening, night) over the last 90 days, with a "Peak: `day` `time`" chip calling out your busiest slot (for example, "Peak: Saturday 2 PM"). Times are shown in America/Toronto time.
 - **Program health** — a summary of how your loyalty program is trending.
-- **At-risk members** — customers whose visit pattern suggests they're drifting away, which is also what feeds the automatic win-back emails (see [Members](/dashboard/customers)). Click through to see them as a filtered segment.
+- **At-risk members** — customers whose visit pattern suggests they're drifting away, which is also what feeds the automatic win-back emails (see [Customers](/dashboard/customers)). Click through to see them as a filtered segment.
 
 ## Owner vs. manager access
 
 Ruffus has two dashboard roles:
 
-- **Owner** — full access to every section listed above.
-- **Manager** — limited to the counter tools: Card Studio. Managers run the floor; they don't see billing, members, staff PIN management, or program-wide settings.
+- **Owner** — full access to every destination listed above.
+- **Manager** — limited to **In store**, and only its Poster & QR, Stamp codes, NFC cards, and Devices tabs. Managers run the floor; they don't see billing, customers, campaigns, or program-wide settings — and not the Staff, Staff playbook, or Practice tabs within In store either.
 
-Staff working the counter itself don't get dashboard accounts at all — they use a 6-digit PIN, set up by the owner from **Dashboard → Staff**. See [Members](/dashboard/customers) for more on staff access.
+Staff working the counter itself don't get dashboard accounts at all — they use a 6-digit PIN, set up by the owner from **In store → Staff**. See [Customers](/dashboard/customers) for more on staff access.

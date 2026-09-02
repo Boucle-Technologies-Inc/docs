@@ -1,12 +1,12 @@
 ---
-title: "Members: Your Customer List, Timelines, and Win-Back Emails"
-sidebarTitle: "Members"
-description: "How the Members list, member detail timelines, CSV export, and automatic win-back emails work in the Ruffus dashboard."
+title: "Customers: Your Customer List, Timelines, and Win-Back Emails"
+sidebarTitle: "Customers"
+description: "How the Customers list, member detail timelines, CSV export, and automatic win-back emails work in the Ruffus dashboard."
 ---
 
-Every person who joins your loyalty card shows up in **Members** — searchable, sortable, and exportable, with a full history for each individual customer.
+Every person who joins your loyalty card shows up in **Customers** — searchable, sortable, and exportable, with a full history for each individual customer. Renamed from "Members," though you'll still see "member" used generically in places to mean the same thing.
 
-## The Members list
+## The Customers list
 
 Each row shows:
 
@@ -33,7 +33,7 @@ Above the list, filter chips let you narrow the list down to a specific segment,
 Segments combine with search, so you can filter to a segment and then search within it to find a specific customer.
 
 <Tip>
-  The **At-risk** and **Close to reward** cards on the Dashboard overview link straight into the matching segment here — a fast way to go from a summary number to the actual list of customers behind it. The At-risk card also has its own bulk **send reminder** button, letting you manually trigger the same inactivity-nudge email the automated weekly job sends, for the members currently listed there.
+  The **At-risk** and **Close to reward** cards on Home's Overview tab link straight into the matching segment here — a fast way to go from a summary number to the actual list of customers behind it. The At-risk card also has its own bulk **send reminder** button, letting you manually trigger the same inactivity-nudge email the automated weekly job sends, for the members currently listed there.
 </Tip>
 
 ## Member detail timeline
@@ -56,7 +56,7 @@ Ruffus automatically brings inactive customers back for you — there's nothing 
 - A customer won't be re-nudged more than once every 60 days, so nobody gets spammed.
 - All marketing messages are consent-gated with an unsubscribe link, in line with Québec's CASL rules.
 
-The one thing you _can_ customize is a short personal note — up to 280 characters — that gets appended to the win-back email. You'll find it under **Dashboard → Campaigns → Win-back**, alongside an audience preview and send history.
+The one thing you _can_ customize is a short personal note — up to 280 characters — that gets appended to the win-back email. You'll find it under **Settings → Win-back**, alongside an audience preview and send history.
 
 <Note>
   There's no threshold selector (you can't change the 30-day window) and no template editor. The win-back email is designed and sent automatically — your customization is limited to that personal note.
@@ -66,11 +66,11 @@ Ruffus also sends two other automatic emails, unrelated to inactivity: a "your r
 
 ## Campaigns
 
-For promos beyond win-back, head to **Dashboard → Campaigns**. You can run bonus-stamp or new-member-bonus promotions, scoped to a specific location and a start/end date. See [Multi-Location](/dashboard/multi-location) if you're running campaigns across more than one location, and [Campaigns & Automated Messages](/dashboard/campaigns) for the full picture — including every automatic lifecycle email and push Ruffus sends beyond win-back.
+For promos beyond win-back, head to **Campaigns**. You can run bonus-stamp or new-member-bonus promotions, scoped to a specific location and a start/end date. See [Multi-Location](/dashboard/multi-location) if you're running campaigns across more than one location, and [Campaigns & Automated Messages](/dashboard/campaigns) for the full picture — including every automatic lifecycle email and push Ruffus sends beyond win-back.
 
 ## Staff access to members
 
-The Members page isn't in a manager's sidebar — it's an owner-only nav item, so managers don't see a link into it day to day. That said, the underlying member-detail and send-reminder endpoints only require a staff login, not specifically an owner, so a manager who has a direct link to a member isn't blocked by the API itself. In practice, member management is an owner tool; managers work the counter. Staff working the counter don't have dashboard logins at all — they use 6-digit PINs created at **Dashboard → Staff**, which only gate stamp approvals and redemptions, not access to your customer data. There's no email-invite flow for staff; PINs are the whole model.
+The Customers page isn't in a manager's sidebar — managers only see **In store**, so they don't have a link into it day to day. That said, the underlying member-detail and send-reminder endpoints only require a staff login, not specifically an owner, so a manager who has a direct link to a member isn't blocked by the API itself. In practice, member management is an owner tool; managers work the counter. Staff working the counter don't have dashboard logins at all — they use 6-digit PINs created at **In store → Staff**, which only gate stamp approvals and redemptions, not access to your customer data. There's no email-invite flow for staff; PINs are the whole model.
 
 ## Privacy
 

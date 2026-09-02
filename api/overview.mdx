@@ -20,7 +20,7 @@ Only `/v1/*` paths are served on this host. All responses are JSON.
 
 ## Authentication
 
-Create keys from **Dashboard → API keys** (owner role required). The full key — format `rk_live_…` — is shown **once** at creation; store it securely. Only a hash is kept on our side, so a lost key can't be recovered, only revoked and replaced.
+Create keys from **Settings → Developer** (owner role required; this tab is gated and unavailable during the initial pilot, matching the warning above). The full key — format `rk_live_…` — is shown **once** at creation; store it securely. Only a hash is kept on our side, so a lost key can't be recovered, only revoked and replaced.
 
 Pass the key on every request, either way:
 

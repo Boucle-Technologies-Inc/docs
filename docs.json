@@ -50,8 +50,8 @@
             "group": "Dashboard & Analytics",
             "pages": [
               "dashboard/overview",
-              "dashboard/import",
               "dashboard/customers",
+              "dashboard/import",
               "dashboard/multi-location",
               "dashboard/settings",
               "dashboard/campaigns",

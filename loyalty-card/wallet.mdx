@@ -40,11 +40,15 @@ Apple Wallet and Google Wallet passes can also surface on a customer's lock scre
 Wallet passes update quietly, but Ruffus also sends real notifications (email and push) at two moments:
 
 1. **Reward ready** — the instant a customer completes their card, they get an email and push notification letting them know their reward is waiting.
-2. **Reward reminder** — if an earned reward sits unclaimed for 14 or more days, Ruffus sends an automatic follow-up email and push notification.
+2. **Reward reminder** — if an earned reward sits unclaimed for 14 or more days, Ruffus sends one automatic follow-up. It goes to the first channel that reaches the customer: their Wallet pass, then web push, then email. It is one message, not one per channel.
 
 <Note>
   These are separate from the Apple Wallet lock-screen message. The reward-ready and reminder notifications go out over email and push regardless of whether the customer has added their card to a wallet at all.
 </Note>
+
+## Getting a card back from its pass
+
+A customer who never added a phone number and lost their session can recover the card from its saved pass. Opening the pass's link on a phone that isn't signed in offers **Use this card**. One tap moves the card to that phone, with no code to enter, and any stamps already collected on that phone are added to it. The other recovery option, **Add my phone instead**, still sends a text code.
 
 ## Progressive Web App (PWA)
 

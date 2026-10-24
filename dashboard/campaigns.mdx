@@ -60,12 +60,12 @@ Ruffus also sends a set of automatic emails and push notifications on your behal
 | Reward reminder | A completed reward sits unclaimed for 14\+ days | Every 7 days, until claimed | Indirectly — shares win-back's personal note |
 | Redemption follow-up | Right after a customer redeems a reward | Once per redemption | No |
 | Inactivity-expiry warning | A customer's balance is approaching inactivity-expiry clearing (see below) | Once, before it clears | Indirectly — via your inactivity-expiry setting |
-| Slow-day nudge | A day of the week you've marked as historically quiet | Weekly, on the day(s) you pick | **Yes** — off by default |
-| Anniversary | The anniversary of a customer's join date | Once a year | No |
-| Birthday | A customer's self-reported birthday (set from their own account) | Once a year | No |
+| Slow-day nudge | A day of the week you've marked as historically quiet | Weekly, on the day(s) you pick | **Yes** — currently switched off for everyone |
+| Anniversary | The anniversary of a customer's join date | Once a year | No — currently switched off for everyone |
+| Birthday | A customer's self-reported birthday (set from their own account) | Once a year, per business | No |
 | Win-back | A customer hasn't visited in 30\+ days | At most once every 60 days | **Yes** — personal note |
 
-All of these send by email and push notification together, same as the rest of Ruffus's customer messaging.
+Reward reminder, win-back and birthday go through one shared set of rules. Each message is sent once, on the first channel that reaches the customer: their Wallet pass, then web push, then email. Wallet counts only for customers who hold your pass and visited in the last two years. Push and email need the customer's marketing opt-in. Across every business a customer uses, they get at most one of these lifecycle messages a week.
 
 ### Win-back's personal note
 
@@ -75,7 +75,7 @@ The Reward reminder email above uses this same personal-note field — it isn't 
 
 ### Slow-day nudges
 
-Unlike everything else in this table, the slow-day nudge is entirely opt-in: pick which day (or days) of the week tend to be quiet for your business, and Ruffus sends a nudge to recently-active-but-not-regular customers on those days. It's off until you turn it on — there's no default day.
+The slow-day nudge is switched off for every merchant for now. When it returns it is entirely opt-in: pick which day (or days) of the week tend to be quiet for your business, and Ruffus sends a nudge to recently-active-but-not-regular customers on those days. It's off until you turn it on — there's no default day.
 
 ### Inactivity expiry and its warning email
 
